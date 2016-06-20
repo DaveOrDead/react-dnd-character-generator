@@ -1,0 +1,35 @@
+.c-stat-box {
+    border: 1px solid;
+    margin-left: rem($shell-g-spacing);
+    padding: rem($shell-g-spacing-2x-small);
+    text-align: center;
+    width: rem($shell-g-spacing-4x-large);
+}
+
+.c-stat-box__value {
+    display: block;
+}
+
+.c-stat-box__label {
+    display: block;
+    font-size: rem($shell-g-font-size-2x-small);
+    text-transform: uppercase;
+}
+
+.c-stat {
+    align-items: flex-end;
+    display: flex;
+}
+
+.c-stat .c-text-input {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border: 1px solid rgba($shell-g-color-black, 0.2);
+    border-right: none;
+    width: rem(150);
+}
+
+.c-stat .c-button {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}

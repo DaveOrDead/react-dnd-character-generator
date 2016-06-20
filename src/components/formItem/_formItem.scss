@@ -1,0 +1,28 @@
+/**
+ * Base.
+ */
+
+.c-form-item:not(:last-child) {
+    margin-bottom: rem($shell-g-spacing-large);
+}
+
+/**
+ * Modifier: decrease the gap between each component instance when `<label>`
+ * text is hidden visually i.e. `isLabelHidden` prop is set to `true`. We do
+ * this as product design see these form fields typically being part of a
+ * group with one heading (a `<legend>` element) therefore a tighter gap is
+ * required.
+ *
+ * We decrease the gap via a negative upwards `margin-top` but never on the
+ * instance coming directly after the `<legend>` element as we always need the
+ * correct spacing applied between the heading and the form field coming after
+ * it.
+ */
+
+.c-form-item--hidden-label {
+    margin-top: -(rem($shell-g-spacing-small));
+}
+
+.c-fieldset-element__legend + .c-form-item--hidden-label {
+    margin-top: 0;
+}
