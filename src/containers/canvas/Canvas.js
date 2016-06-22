@@ -9,6 +9,9 @@ import RadioInput from '../../components/radioInput';
 import SelectList from '../../components/selectList';
 import StatList from '../../components/statList';
 import StatBox from '../../components/statBox';
+
+import {getStatModifier} from '../../utils/getStatModifier';
+
 import {classes} from '../../data/classes';
 import {races} from '../../data/races';
 import {alignments} from '../../data/alignments';
@@ -108,15 +111,15 @@ const Canvas = ({actions, character}) => {
                     <h3 className="heading-sub-title">Saving Throws</h3>
                     <StatBox
                         label="Fort"
-                        value={character.class.baseSavingThrows.fort}
+                        value={character.class.baseSavingThrows.fort + getStatModifier(character.stat3)}
                     />
                     <StatBox
                         label="Ref"
-                        value={character.class.baseSavingThrows.ref}
+                        value={character.class.baseSavingThrows.ref + getStatModifier(character.stat2)}
                     />
                     <StatBox
                         label="Will"
-                        value={character.class.baseSavingThrows.will}
+                        value={character.class.baseSavingThrows.will + getStatModifier(character.stat5)}
                     />
                 </div>
 
