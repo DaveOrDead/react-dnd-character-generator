@@ -6,11 +6,11 @@ const StatList = ({data, ...props}) => {
         <div>
         {data.map(function(result) {
           return (<Stat
-                               key={result.id}
-                               statId={result.id}
-                               text={result.name}
-                               {...props}
-                           />);
+                       key={result.id}
+                       statId={result.id}
+                       text={result.name}
+                       {...props}
+                   />);
         })}
         </div>
     );

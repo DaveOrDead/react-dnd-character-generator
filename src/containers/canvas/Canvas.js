@@ -1,72 +1,37 @@
 import React from 'react';
+
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as actions from '../../actions/charGenActions';
+
 import TextInput from '../../components/textInput';
 import RadioInput from '../../components/radioInput';
 import SelectList from '../../components/selectList';
 import StatList from '../../components/statList';
-import BaseAttackBox from '../../components/baseAttackBox';
-import SavingThrows from '../savingThrows';
+import StatBox from '../../components/statBox';
 import {classes} from '../../data/classes';
 import {races} from '../../data/races';
 import {alignments} from '../../data/alignments';
 import {stats} from '../../data/stats';
 
-class Canvas extends React.Component {
+const Canvas = ({actions, character}) => {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedRace: {value: 'human'},
-            selectedClass: {value: 'bard'},
-            gender: 'male',
-            level: '1'
-        };
-        this.passClass = this.passClass.bind(this);
-        this.passRace = this.passRace.bind(this);
-        this.toggleGender = this.toggleGender.bind(this);
-        this.changeValue = this.changeValue.bind(this);
-    }
-
-    changeValue(e) {
-        this.setState({
-            [e.target.name]: e.target.value
-        });
-    }
-
-    toggleGender(e) {
-        this.setState({
-            gender: e.target.value
-        });
-    }
-
-    passClass(e) {
-        this.setState({
-            selectedClass: classes.filter(el => el.value === e.target.value)[0]
-        });
-    }
-
-    passRace(e) {
-        this.setState({
-            selectedRace: races.filter(el => el.value === e.target.value)[0]
-        });
-    }
-
-    render() {
         return (
             <div className="l-container">
                 <TextInput
                     labelText="Name: "
-                    value={this.state.name}
+                    value={character.name}
                     id="name"
                     name="name"
-                    onChange={this.changeValue}
+                    onChange={(e) => actions.updateValue('name', e.target.value)}
                     />
 
                 <TextInput
                     labelText="Age: "
-                    value={this.state.age}
+                    value={character.age}
                     id="age"
                     name="age"
-                    onChange={this.changeValue}
+                    onChange={(e) => actions.updateValue('age', e.target.value)}
                     />
 
                 <div className="h-spacing">
@@ -78,34 +43,26 @@ class Canvas extends React.Component {
                             labelText="Male"
                             value="male"
                             name="gender"
-                            checked={this.state.gender === 'male'}
-                            onClick={this.toggleGender}
+                            checked={character.gender === 'male'}
+                            onClick={(e) => actions.updateValue('gender', e.target.value)}
                         />
                         <RadioInput
                             id="female"
                             labelText="Female"
                             value="female"
                             name="gender"
-                            checked={this.state.gender === 'female'}
-                            onClick={this.toggleGender}
+                            checked={character.gender === 'female'}
+                            onClick={(e) => actions.updateValue('gender', e.target.value)}
                             />
                     </fieldset>
                 </div>
-
-                <TextInput
-                    labelText="Level: "
-                    value={this.state.level}
-                    id="level"
-                    name="level"
-                    onChange={this.changeValue}
-                />
 
                 <SelectList
                     labelText="Race: "
                     id="race"
                     name="selectedRace"
                     options={races}
-                    onChange={this.passRace}
+                    onChange={(e) => actions.updateRace('race', e.target.value)}
                 />
 
                 <SelectList
@@ -113,17 +70,26 @@ class Canvas extends React.Component {
                     id="class"
                     options={classes}
                     name="selectedClass"
-                    onChange={this.passClass}
+                    onChange={(e) => actions.updateClass('class', e.target.value)}
+                />
+
+                <TextInput
+                    labelText="Level: "
+                    value={character.level}
+                    id="level"
+                    name="level"
+                    onChange={(e) => actions.updateValue('level', e.target.value)}
                 />
 
                 <SelectList
                     labelText="Alignment: "
                     id="alignment"
                     options={alignments}
+                    onChange={(e) => actions.updateValue('alignment', e.target.value)}
                 />
 
                 <StatList
-                    race={this.state.selectedRace}
+                    race={character.race}
                     data={stats}
                 />
 
@@ -131,24 +97,53 @@ class Canvas extends React.Component {
 
                      <h3 className="heading-sub-title">Base Attack</h3>
 
-                    <BaseAttackBox
-                        selectedClass={this.state.selectedClass}
-                        level={this.state.level}
+                    <StatBox
+                        label="BAB"
+                        value={character.class.baseAttackBonus[0]}
                     />
                 </div>
 
                 <div className="h-spacing">
 
                     <h3 className="heading-sub-title">Saving Throws</h3>
-                    <SavingThrows
-                        selectedClass={this.state.selectedClass}
-                        level={this.state.level}
+                    <StatBox
+                        label="Fort"
+                        value={character.class.baseSavingThrows.fort}
+                    />
+                    <StatBox
+                        label="Ref"
+                        value={character.class.baseSavingThrows.ref}
+                    />
+                    <StatBox
+                        label="Will"
+                        value={character.class.baseSavingThrows.will}
                     />
                 </div>
 
+
+
             </div>
             );
-    }
+    };
+
+Canvas.propTypes = {
+  actions: React.PropTypes.object.isRequired,
+  character: React.PropTypes.object.isRequired
+};
+
+function mapStateToProps(state) {
+  return {
+    character: state.character
+  };
 }
 
-export default Canvas;
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Canvas);

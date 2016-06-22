@@ -1,47 +1,19 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as actions from '../../actions/charGenActions';
+
 import TextInput from '../../components/textInput';
 import Button from '../../components/button';
 import StatBox from '../../components/statBox';
 import {rollStat} from '../../utils/rollStat';
 import {getStatModifier} from '../../utils/getStatModifier';
 
-class Stat extends React.Component {
+const Stat = ({actions, character, text, id, statId}) => {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            value: 10
-        };
-        this.handleTextChange = this.handleTextChange.bind(this);
-        this.generateStat = this.generateStat.bind(this);
-    }
+        const value = parseInt(character[statId]);
 
-    handleTextChange(e) {
-        this.setState({
-            value: e.target.value
-        });
-    }
-
-    generateStat() {
-        this.setState({
-            value: rollStat()
-        });
-    }
-
-    render() {
-
-        const {text, id, statId, race} = this.props;
-
-        const getRacialModifier = (racialMod = 0) => {
-            if (race.modifiers !== undefined &&
-                race.modifiers[statId]) {
-                racialMod = race.modifiers[statId];
-            }
-            return racialMod;
-        };
-
-        const value = parseInt(this.state.value);
-        const racialModifier = getRacialModifier();
+        const racialModifier = character.race.modifiers[statId] || 0;
         const total = value + racialModifier;
         const modifier = getStatModifier(total);
 
@@ -51,11 +23,11 @@ class Stat extends React.Component {
                     <TextInput
                         id={id}
                         labelText={`${text}:`}
-                        value={this.state.value}
-                        onChange={this.handleTextChange}
+                        value={character[statId]}
+                        onChange={(e) => actions.updateValue('name', e.target.value)}
                         type="number"
                     />
-                    <Button text="Roll" onClick={this.generateStat}/>
+                    <Button text="Roll" onClick={() => actions.updateValue(statId, rollStat())}/>
 
                     <svg className="" height="30" width="30">
                         <use xlinkHref="#plus-icon" />
@@ -75,14 +47,30 @@ class Stat extends React.Component {
        </div>
 
         );
-    }
-}
+    };
+
 
 Stat.propTypes = {
+    actions: React.PropTypes.object.isRequired,
+    character: React.PropTypes.object.isRequired,
     id: React.PropTypes.string,
     text: React.PropTypes.string,
-    statId: React.PropTypes.string,
-    race: React.PropTypes.object
+    statId: React.PropTypes.string
 };
 
-export default Stat;
+function mapStateToProps(state) {
+  return {
+    character: state.character
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Stat);

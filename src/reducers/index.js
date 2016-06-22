@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import charGen from './charGenReducer';
+import character from './charGenReducer';
 
 const rootReducer = combineReducers({
-  charGen
+  character
 });
 
 export default rootReducer;
