@@ -1,14 +1,11 @@
 import React from 'react';
 
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as actions from '../../actions/charGenActions';
-
 import StatList from '../../components/statList';
 
 import {stats} from '../../data/stats';
 
-const AbilitiesPage = ({actions, character}) => {
+const AbilitiesPage = ({character}) => {
 
         return (
             <div className="l-container">
@@ -23,7 +20,6 @@ const AbilitiesPage = ({actions, character}) => {
     };
 
 AbilitiesPage.propTypes = {
-  actions: React.PropTypes.object.isRequired,
   character: React.PropTypes.object.isRequired
 };
 
@@ -33,13 +29,6 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  };
-}
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(AbilitiesPage);

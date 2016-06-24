@@ -10,6 +10,7 @@ const FeatsPage = ({actions, character}) => {
             <div className="l-container">
 
                <h1>Feats Page</h1>
+               <p onChange={actions.xyz}>{character.name}</p>
 
             </div>
             );

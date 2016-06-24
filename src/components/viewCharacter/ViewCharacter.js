@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const ViewCharacter = (props) => {
+const ViewCharacter = () => {
   return (
     <div>
       <h1>Character name</h1>

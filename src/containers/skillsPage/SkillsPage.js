@@ -5,30 +5,36 @@ import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/charGenActions';
 import {skills} from '../../data/skills';
 import {getInitialSkillPoints} from '../../utils/getInitialSkillPoints';
+import {getRemainingSkillPoints} from '../../utils/getRemainingSkillPoints';
 import TextInput from '../../components/textInput';
 
 const SkillsPage = ({actions, character}) => {
 
-    const maxSkillPoints = getInitialSkillPoints(character.class.initSkillModifier, character.stat4);
+        const maxSkillPoints = getInitialSkillPoints(character.class.initSkillModifier, character.stat4);
+
+        const remainingSkillPoints = getRemainingSkillPoints(character.skills, maxSkillPoints);
+
 
         return (
             <div>
                 <h1>Skills Page</h1>
                 <div className="">
-                    Skill points: / {maxSkillPoints}
+                    Skill points: {remainingSkillPoints} / {maxSkillPoints}
 
                 </div>
                 <table>
                     <thead>
-                        <th>Name</th>
-                        <th>Ability</th>
-                        <th>Ranks</th>
-                        <th>Class skill</th>
+                        <tr>
+                            <th>Name</th>
+                            <th>Ability</th>
+                            <th>Ranks</th>
+                            <th>Class skill</th>
+                        </tr>
                     </thead>
                     <tbody>
 
                    {skills.map((item, i) =>
-                        <tr>
+                        <tr key={i}>
                         <td>
                             {item.name}
                         </td>
@@ -37,9 +43,11 @@ const SkillsPage = ({actions, character}) => {
                             <TextInput
                                 labelText={item.name}
                                 isLabelHidden={true}
+                                value={character.skills[item.id]}
+                                onChange={(e) => actions.updateSkill(item.id, e.target.value, remainingSkillPoints, maxSkillPoints)}
                             />
                         </td>
-                        <td>True</td>
+                        <td>{character.class.classSkills[item.id] ? 'C' : 'CC'}</td>
                         </tr>
                     )}
                    </tbody>
