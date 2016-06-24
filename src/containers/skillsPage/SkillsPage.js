@@ -1,26 +1,23 @@
 import React from 'react';
 
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as actions from '../../actions/charGenActions';
 import {skills} from '../../data/skills';
+
+import SkillItem from '../SkillItem';
 import {getInitialSkillPoints} from '../../utils/getInitialSkillPoints';
 import {getRemainingSkillPoints} from '../../utils/getRemainingSkillPoints';
-import Button from '../../components/button';
 
-const SkillsPage = ({actions, character}) => {
+const SkillsPage = ({character}) => {
 
         const maxSkillPoints = getInitialSkillPoints(character.class.initSkillModifier, character.stat4);
 
         const remainingSkillPoints = getRemainingSkillPoints(character.skills, maxSkillPoints);
-
 
         return (
             <div>
                 <h1>Skills Page</h1>
                 <div className="">
                     Skill points: {remainingSkillPoints} / {maxSkillPoints}
-
                 </div>
                 <table>
                     <thead>
@@ -36,27 +33,13 @@ const SkillsPage = ({actions, character}) => {
                     <tbody>
 
                    {skills.map((item, i) =>
-                        <tr key={i}>
-                        <td>{item.name}<br />
-                        ({item.keyAbilityId})</td>
-                        <td>{character.class.classSkills[item.id] ? 'C' : 'CC'}</td>
-                        <td><strong>{!character.class.classSkills[item.id] ? character.skills[item.id] / 2 || 0 : character.skills[item.id] || 0}</strong></td>
-                        <td>+X</td>
-                        <td>{!character.class.classSkills[item.id] ? character.skills[item.id] / 2 || 0 : character.skills[item.id] || 0}</td>
-                        <td>
-                            <Button
-                                disabled={character.skills[item.id] === 4 || remainingSkillPoints === 0}
-                                text="+"
-                                onClick={() => actions.updateSkill(item.id, character.skills[item.id] + 1 || 1)}
-                            />
-                            <Button
-                                disabled={!character.skills[item.id]}
-                                text="-"
-                                onClick={() => actions.updateSkill(item.id, character.skills[item.id] - 1)}
-                            />
-                        </td>
 
-                        </tr>
+                        <SkillItem
+                            key={i}
+                            item={item}
+                            remainingSkillPoints={remainingSkillPoints}
+                        />
+
                     )}
                    </tbody>
                    </table>
@@ -67,7 +50,6 @@ const SkillsPage = ({actions, character}) => {
     };
 
 SkillsPage.propTypes = {
-  actions: React.PropTypes.object.isRequired,
   character: React.PropTypes.object.isRequired
 };
 
@@ -77,13 +59,6 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  };
-}
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(SkillsPage);
