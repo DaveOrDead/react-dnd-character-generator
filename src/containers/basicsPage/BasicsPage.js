@@ -9,10 +9,30 @@ import SelectList from '../../components/selectList';
 
 import {classes} from '../../data/classes';
 import {races} from '../../data/races';
-import {alignments} from '../../data/alignments';
+// import {alignments} from '../../data/alignments';
 
-const BasicsPage = ({actions, character}) => {
 
+class BasicsPage extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            alignments: []
+        };
+    }
+
+    componentDidMount(props) {
+        const { dispatch, actions } = props;
+        const face = dispatch(actions.fetchData());
+        console.log('face', face);
+        this.setState({
+            alignments: face
+        });
+    }
+
+    render() {
+        const {character} = this.props;
         return (
             <div className="l-container">
                 <TextInput
@@ -42,32 +62,35 @@ const BasicsPage = ({actions, character}) => {
                 <SelectList
                     labelText="Alignment: "
                     id="alignment"
-                    options={alignments}
+                    options={this.state.alignments}
                     onChange={(e) => actions.updateValue('alignment', e.target.value)}
                 />
 
             </div>
             );
-    };
+    }
+}
 
 BasicsPage.propTypes = {
   actions: React.PropTypes.object.isRequired,
-  character: React.PropTypes.object.isRequired
+  character: React.PropTypes.object.isRequired,
+  dispatch: React.PropTypes.func
 };
 
 function mapStateToProps(state) {
   return {
-    character: state.character
+    character: state.character,
+    alignments: state.data
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  };
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     actions: bindActionCreators(actions, dispatch)
+//   };
+// }
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(BasicsPage);
+

@@ -1,4 +1,4 @@
-import {UPDATE_VALUE, UPDATE_RACE, UPDATE_CLASS} from '../constants/actionTypes';
+import {UPDATE_VALUE, UPDATE_RACE, UPDATE_CLASS, REQUEST_DATA, RECEIVE_DATA} from '../constants/actionTypes';
 import objectAssign from 'object-assign';
 import initialState from './initialState';
 
@@ -21,6 +21,17 @@ export default function charGenReducer(state = initialState.character, action) {
         newState = objectAssign({}, state);
         newState[action.fieldName] = action.characterClass;
         return newState;
+
+        case REQUEST_DATA:
+            return Object.assign({}, state, {
+                fetching: true
+            });
+
+        case RECEIVE_DATA:
+            return Object.assign({}, state, {
+                fetching: false,
+                data: action.data
+        });
 
         default:
         return state;
