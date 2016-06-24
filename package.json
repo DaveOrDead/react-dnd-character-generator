@@ -25,6 +25,8 @@
   "author": "@DaveOrDead",
   "license": "MIT",
   "dependencies": {
+    "es6-promise": "3.2.1",
+    "isomorphic-fetch": "2.2.1",
     "object-assign": "4.1.0",
     "react": "15.0.2",
     "react-dom": "15.0.2",
@@ -68,6 +70,8 @@
     "prompt": "1.0.0",
     "react-addons-test-utils": "15.0.2",
     "redux-immutable-state-invariant": "1.2.3",
+    "redux-logger": "2.6.1",
+    "redux-thunk": "2.1.0",
     "replace": "0.3.0",
     "rimraf": "2.5.2",
     "sass-loader": "3.2.0",
@@ -75,6 +79,7 @@
     "sinon": "1.17.4",
     "sinon-chai": "2.8.0",
     "style-loader": "0.13.1",
+    "superagent": "2.0.0",
     "webpack": "1.13.0",
     "webpack-dev-middleware": "1.6.1",
     "webpack-hot-middleware": "2.10.0"
