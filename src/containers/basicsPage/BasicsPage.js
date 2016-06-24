@@ -56,7 +56,7 @@ class BasicsPage extends React.Component {
                     id="class"
                     options={classes}
                     name="selectedClass"
-                    onChange={(e) => actions.updateClass('class', e.target.value)}
+                    onChange={(e) => actions.updateClass('class', e.target.value, character.level)}
                 />
 
                 <SelectList

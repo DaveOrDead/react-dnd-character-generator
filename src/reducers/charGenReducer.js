@@ -1,8 +1,6 @@
 import {UPDATE_VALUE, UPDATE_RACE, UPDATE_CLASS, REQUEST_DATA, RECEIVE_DATA} from '../constants/actionTypes';
 import objectAssign from 'object-assign';
 import initialState from './initialState';
-import {getRace} from '../utils/getRace';
-import {getCharacterClass} from '../utils/getCharacterClass';
 
 export default function charGenReducer(state = initialState.character, action) {
     let newState;
