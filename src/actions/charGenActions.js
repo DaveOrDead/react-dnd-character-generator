@@ -28,8 +28,7 @@ export function updateClass(value, level) {
     };
 }
 
-export function updateSkill(fieldName, value, remainingSkillPoints, isClassSkill) {
-
+export function updateSkill(fieldName, value) {
     return {
         type: types.UPDATE_SKILL,
         fieldName,

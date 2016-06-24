@@ -40,19 +40,19 @@ const SkillsPage = ({actions, character}) => {
                         <td>{item.name}<br />
                         ({item.keyAbilityId})</td>
                         <td>{character.class.classSkills[item.id] ? 'C' : 'CC'}</td>
-                        <td><strong>{character.skills[item.id] || 0}</strong></td>
+                        <td><strong>{!character.class.classSkills[item.id] ? character.skills[item.id] / 2 || 0 : character.skills[item.id] || 0}</strong></td>
                         <td>+X</td>
-                        <td>{character.skills[item.id] || 0}</td>
+                        <td>{!character.class.classSkills[item.id] ? character.skills[item.id] / 2 || 0 : character.skills[item.id] || 0}</td>
                         <td>
                             <Button
                                 disabled={character.skills[item.id] === 4 || remainingSkillPoints === 0}
                                 text="+"
-                                onClick={() => actions.updateSkill(item.id, character.skills[item.id] + 1 || 1, remainingSkillPoints, character.class.classSkills[item.id])}
+                                onClick={() => actions.updateSkill(item.id, character.skills[item.id] + 1 || 1)}
                             />
                             <Button
                                 disabled={!character.skills[item.id]}
                                 text="-"
-                                onClick={() => actions.updateSkill(item.id, character.skills[item.id] - 1, remainingSkillPoints, character.class.classSkills[item.id])}
+                                onClick={() => actions.updateSkill(item.id, character.skills[item.id] - 1)}
                             />
                         </td>
 
