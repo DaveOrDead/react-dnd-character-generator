@@ -15,6 +15,8 @@ export default {
     class: {
         value: 'barbarian',
         level: 1,
+        initSkillModifier: 4,
+        levelSkillModifier: 4,
         baseAttackBonus: [2],
         baseSavingThrows: {
                     fort: 2,

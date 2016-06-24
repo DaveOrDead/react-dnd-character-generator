@@ -19,12 +19,11 @@ export function updateRace(fieldName, value) {
     };
 }
 
-export function updateClass(fieldName, value, level) {
+export function updateClass(value, level) {
     return {
         type: types.UPDATE_CLASS,
-        fieldName,
         value,
-        newClass: getCharacterClass(value, level)
+        class: getCharacterClass(value, level)
     };
 }
 
