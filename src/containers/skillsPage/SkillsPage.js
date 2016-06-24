@@ -6,7 +6,7 @@ import * as actions from '../../actions/charGenActions';
 import {skills} from '../../data/skills';
 import {getInitialSkillPoints} from '../../utils/getInitialSkillPoints';
 import {getRemainingSkillPoints} from '../../utils/getRemainingSkillPoints';
-import TextInput from '../../components/textInput';
+import Button from '../../components/button';
 
 const SkillsPage = ({actions, character}) => {
 
@@ -26,28 +26,36 @@ const SkillsPage = ({actions, character}) => {
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Ability</th>
-                            <th>Ranks</th>
                             <th>Class skill</th>
+                            <th>Total</th>
+                            <th>Ability Mod</th>
+                            <th>Ranks</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
 
                    {skills.map((item, i) =>
                         <tr key={i}>
+                        <td>{item.name}<br />
+                        ({item.keyAbilityId})</td>
+                        <td>{character.class.classSkills[item.id] ? 'C' : 'CC'}</td>
+                        <td><strong>{character.skills[item.id] || 0}</strong></td>
+                        <td>+X</td>
+                        <td>{character.skills[item.id] || 0}</td>
                         <td>
-                            {item.name}
-                        </td>
-                        <td>{item.keyAbilityId}</td>
-                        <td>
-                            <TextInput
-                                labelText={item.name}
-                                isLabelHidden={true}
-                                value={character.skills[item.id]}
-                                onChange={(e) => actions.updateSkill(item.id, e.target.value, remainingSkillPoints, maxSkillPoints)}
+                            <Button
+                                disabled={character.skills[item.id] === 4 || remainingSkillPoints === 0}
+                                text="+"
+                                onClick={() => actions.updateSkill(item.id, character.skills[item.id] + 1 || 1, remainingSkillPoints, character.class.classSkills[item.id])}
+                            />
+                            <Button
+                                disabled={!character.skills[item.id]}
+                                text="-"
+                                onClick={() => actions.updateSkill(item.id, character.skills[item.id] - 1, remainingSkillPoints, character.class.classSkills[item.id])}
                             />
                         </td>
-                        <td>{character.class.classSkills[item.id] ? 'C' : 'CC'}</td>
+
                         </tr>
                     )}
                    </tbody>

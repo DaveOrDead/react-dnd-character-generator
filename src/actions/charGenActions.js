@@ -28,13 +28,7 @@ export function updateClass(value, level) {
     };
 }
 
-export function updateSkill(fieldName, value, remainingSkillPoints) {
-
-    if(remainingSkillPoints < 0) {
-        return alert('Nope, this will take you over your max!');
-    }
-    // console.log(sumObject(characterSkills) + parseInt(value));
-
+export function updateSkill(fieldName, value, remainingSkillPoints, isClassSkill) {
 
     return {
         type: types.UPDATE_SKILL,
