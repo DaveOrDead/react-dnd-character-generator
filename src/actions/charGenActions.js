@@ -2,6 +2,7 @@ import * as types from '../constants/actionTypes';
 import {getRace} from '../utils/getRace';
 import {getCharacterClass} from '../utils/getCharacterClass';
 
+
 export function updateValue(fieldName, value) {
     return {
         type: types.UPDATE_VALUE,
@@ -19,12 +20,19 @@ export function updateRace(fieldName, value) {
     };
 }
 
-export function updateClass(fieldName, value, level) {
+export function updateClass(value, level) {
     return {
         type: types.UPDATE_CLASS,
-        fieldName,
         value,
-        newClass: getCharacterClass(value, level)
+        class: getCharacterClass(value, level)
+    };
+}
+
+export function updateSkill(fieldName, value) {
+    return {
+        type: types.UPDATE_SKILL,
+        fieldName,
+        value
     };
 }
 

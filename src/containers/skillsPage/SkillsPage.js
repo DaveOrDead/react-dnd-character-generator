@@ -1,21 +1,55 @@
 import React from 'react';
 
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as actions from '../../actions/charGenActions';
+import {skills} from '../../data/skills';
 
+import SkillItem from '../SkillItem';
+import {getInitialSkillPoints} from '../../utils/getInitialSkillPoints';
+import {getRemainingSkillPoints} from '../../utils/getRemainingSkillPoints';
 
-const SkillsPage = ({actions, character}) => {
+const SkillsPage = ({character}) => {
+
+        const maxSkillPoints = getInitialSkillPoints(character.class.initSkillModifier, character.stat4);
+
+        const remainingSkillPoints = getRemainingSkillPoints(character.skills, maxSkillPoints);
 
         return (
-            <div className="l-container">
-               <h1>Skills Page</h1>
+            <div>
+                <h1>Skills Page</h1>
+                <div className="">
+                    Skill points: {remainingSkillPoints} / {maxSkillPoints}
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Class skill</th>
+                            <th>Total</th>
+                            <th>Ability Mod</th>
+                            <th>Ranks</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                   {skills.map((item, i) =>
+
+                        <SkillItem
+                            key={i}
+                            item={item}
+                            remainingSkillPoints={remainingSkillPoints}
+                        />
+
+                    )}
+                   </tbody>
+                   </table>
+
+
             </div>
             );
     };
 
 SkillsPage.propTypes = {
-  actions: React.PropTypes.object.isRequired,
   character: React.PropTypes.object.isRequired
 };
 
@@ -25,13 +59,6 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  };
-}
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(SkillsPage);

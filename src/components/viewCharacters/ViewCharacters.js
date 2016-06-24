@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import {existingCharacters} from '../../data/existingCharacters';
 
-const ViewCharacters = (props) => {
+const ViewCharacters = () => {
   return (
     <div>
       <h1>View Characters</h1>

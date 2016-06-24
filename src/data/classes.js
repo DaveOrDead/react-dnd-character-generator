@@ -1,45 +1,3 @@
-export const skills = [
-{
-    id: '1',
-    name: 'Climb',
-    statId: 'stat1'
-},
-{
-    id: '2',
-    name: 'Craft',
-    statId: 'stat5'
-},{
-    id: '3',
-    name: 'Handle Animal',
-    statId: 'stat6'
-},{
-    id: '4',
-    name: 'Intimidate',
-    statId: 'stat6'
-},{
-    id: '5',
-    name: 'Jump',
-    statId: 'stat1'
-},{
-    id: '6',
-    name: 'Listen',
-    statId: 'stat5'
-},{
-    id: '7',
-    name: 'Ride',
-    statId: 'stat5'
-},{
-    id: '8',
-    name: 'Survival',
-    statId: 'stat5'
-},{
-    id: '9',
-    name: 'Swim',
-    statId: 'stat1'
-}
-
-];
-
 export const classes = [
 {
     id: 'c1',
@@ -47,7 +5,17 @@ export const classes = [
     type: 'core',
     hitDie: 12,
     value: 'barbarian',
-    classSkills: ['Climb', 'Craft', 'Handle Animal', 'Intimidate', 'Jump (Str)', 'Listen', 'Ride', 'Survival', 'Swim'],
+    classSkills: {
+                sk5: true,
+                sk8: true,
+                sk16: true,
+                sk19: true,
+                sk20: true,
+                sk22: true,
+                sk28: true,
+                sk35: true,
+                sk36: true
+            },
     initSkillModifier: 4,
     levelSkillModifier: 4,
     level: {

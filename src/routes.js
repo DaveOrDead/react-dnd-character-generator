@@ -20,8 +20,7 @@ export default (
             <Route path="skills" component={SkillsPage}/>
             <Route path="feats" component={FeatsPage}/>
         </Route>
-        <Route path="view-characters" component={ViewCharacters} >
-        </Route>
+        <Route path="view-characters" component={ViewCharacters} />
         <Route path="view-character/:charId" component={ViewCharacter}/>
   </Route>
 );

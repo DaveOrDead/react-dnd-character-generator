@@ -1,0 +1,13 @@
+/**
+ * Label.
+ * 1. Apply a gutter between the input and label using `padding` not `margin`
+ *    so we don't have any non-interactive gaps ;)
+ */
+
+.c-checkbox-input .c-input-label {
+    display: inline-flex;
+    font-size: rem($shell-g-font-size-small);
+    font-weight: $shell-g-font-weight-normal;
+    margin-bottom: 0;
+    padding-left: rem($shell-g-spacing-x-small); // [1]
+}
