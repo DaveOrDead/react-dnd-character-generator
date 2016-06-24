@@ -13,12 +13,12 @@ import FeatsPage from './containers/featsPage';
 
 export default (
   <Route path="/" component={App}>
-      <Route path="/create-character" component={CreateCharacter}>
+      <Route path="create-character" component={CreateCharacter}>
         <IndexRoute component={BasicsPage}/>
         <Route path="abilities" component={AbilitiesPage}/>
         <Route path="skills" component={SkillsPage}/>
         <Route path="feats" component={FeatsPage}/>
       </Route>
-      <Route path="/view-characters" component={ViewCharacters} />
+      <Route path="view-characters" component={ViewCharacters} />
   </Route>
 );

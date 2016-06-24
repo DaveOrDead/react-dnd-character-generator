@@ -3,7 +3,7 @@ import { Link, IndexLink } from 'react-router';
 
 const App = (props) => {
   return (
-    <div>
+    <div className="l-container">
       <IndexLink to="/">Home</IndexLink>
       {' | '}
       <Link to="/create-character">Create New +</Link>
