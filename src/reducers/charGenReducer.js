@@ -10,21 +10,19 @@ export default function charGenReducer(state = initialState.character, action) {
     switch (action.type) {
 
         case UPDATE_VALUE:
-            newState = objectAssign({}, state);
-            newState[action.fieldName] = action.value;
-            return newState;
+        newState = objectAssign({}, state);
+        newState[action.fieldName] = action.value;
+        return newState;
 
         case UPDATE_RACE:
-            const race = getRace(action.value);
-            newState = objectAssign({}, state);
-            newState[action.fieldName] = race;
-            return newState;
+        newState = objectAssign({}, state);
+        newState[action.fieldName] = action.race;
+        return newState;
 
         case UPDATE_CLASS:
-            const characterClass = getCharacterClass(action.value, state.level);
-            newState = objectAssign({}, state);
-            newState[action.fieldName] = characterClass;
-            return newState;
+        newState = objectAssign({}, state);
+        newState[action.fieldName] = action.characterClass;
+        return newState;
 
         case REQUEST_DATA:
             return Object.assign({}, state, {
