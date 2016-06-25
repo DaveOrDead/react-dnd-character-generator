@@ -7,13 +7,13 @@ const CreateCharacter = (props) => {
 
       {props.children}
       <br/>
-      <Link to="/create-character">Step 1: Basics</Link>
+      <Link to="/create">Step 1: Basics</Link>
       {' | '}
-      <Link to="/create-character/abilities">Step 2: Abilities</Link>
+      <Link to="/create/abilities">Step 2: Abilities</Link>
       {' | '}
-      <Link to="/create-character/skills">Step 3: Skills</Link>
+      <Link to="/create/skills">Step 3: Skills</Link>
       {' | '}
-      <Link to="/create-character/feats">Step 4: Feats</Link>
+      <Link to="/create/feats">Step 4: Feats</Link>
     </div>
   );
 };
