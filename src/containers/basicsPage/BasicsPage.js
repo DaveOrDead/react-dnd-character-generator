@@ -14,7 +14,7 @@ import {alignments} from '../../data/alignments';
 const BasicsPage = ({actions, character}) => {
 
         return (
-            <div className="l-container">
+            <div>
                 <TextInput
                     labelText="Name: "
                     value={character.name}

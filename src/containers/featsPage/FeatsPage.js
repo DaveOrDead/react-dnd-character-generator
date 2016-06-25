@@ -7,7 +7,7 @@ import * as actions from '../../actions/charGenActions';
 const FeatsPage = ({actions, character}) => {
 
         return (
-            <div className="l-container">
+            <div>
 
                <h1>Feats Page</h1>
                <p onChange={actions.xyz}>{character.name}</p>

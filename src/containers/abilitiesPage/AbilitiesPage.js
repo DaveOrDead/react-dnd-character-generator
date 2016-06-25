@@ -8,7 +8,7 @@ import {stats} from '../../data/stats';
 const AbilitiesPage = ({character}) => {
 
         return (
-            <div className="l-container">
+            <div>
 
                 <StatList
                     race={character.race}
