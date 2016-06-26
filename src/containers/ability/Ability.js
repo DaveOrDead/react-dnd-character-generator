@@ -3,10 +3,27 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/charGenActions';
 
+import Popover from '../../components/popover';
 import StatBox from '../../components/statBox';
 import {getAbilityModifier} from '../../utils/getAbilityModifier';
 
-const Ability = ({actions, character, text, abilityId}) => {
+
+
+class Ability extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {popoverIsVisible: false}
+        // Manually bind this method to the component instance...
+        this.togglePopover = this.togglePopover.bind(this);
+    }
+
+    togglePopover() {
+        // ...to ensure that 'this' refers to the component instance here.
+        this.setState({popoverIsVisible: !this.state.popoverIsVisible});
+    }
+    render() {
+
+        const { actions, character, text, abilityId } = this.props;
 
         const value = parseInt(character.abilities[abilityId]);
         const racialModifier = character.race.modifiers[abilityId] || 0;
@@ -18,23 +35,34 @@ const Ability = ({actions, character, text, abilityId}) => {
                 <div className="c-stat">
 
                     <strong>{text}</strong>
-
-                    <StatBox label="Total" value={total} />
-
-                    <StatBox label="Racial" value={racialModifier} />
-
-                    <StatBox label="Misc" value={0} />
-
-                    <StatBox label="Base" value={character.abilities[abilityId]} />
-
-                    <StatBox label="Mod" value={modifier} />
-
+                    <div style={{position: 'relative'}}>
+                        <button onClick={this.togglePopover}>
+                            <StatBox label="Total" value={total} />
+                        </button>
+                        <StatBox label="Mod" value={modifier} />
+                        <Popover isVisible={this.state.popoverIsVisible}>
+                            <h3>{text}</h3>
+                            <ul>
+                                <li>
+                                    <strong>Total: </strong>{total}
+                                </li>
+                                <li>
+                                    <strong>Racial Modifier: </strong>{racialModifier}
+                                </li>
+                                <li>
+                                    <strong>Base: </strong>{value}
+                                </li>
+                            </ul>
+                        </Popover>
+                    </div>
+                    <p>Temporary score:</p>
+                    <p>Temporary mod:</p>
                 </div>
 
-       </div>
-
-        );
-    };
+            </div>
+            );
+        }
+    }
 
 
 Ability.propTypes = {
