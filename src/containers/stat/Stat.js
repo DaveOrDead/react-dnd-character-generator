@@ -3,45 +3,36 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/charGenActions';
 
-import TextInput from '../../components/textInput';
 import Button from '../../components/button';
 import StatBox from '../../components/statBox';
 import {rollStat} from '../../utils/rollStat';
-import {getStatModifier} from '../../utils/getStatModifier';
 
-const Stat = ({actions, character, text, id, statId}) => {
+const Stat = ({actions, character, text, id, abilityId}) => {
 
-        const value = parseInt(character[statId]);
-
-        const racialModifier = character.race.modifiers[statId] || 0;
+        const value = parseInt(character.abilities[abilityId]);
+        const racialModifier = character.race.modifiers[abilityId] || 0;
         const total = value + racialModifier;
-        const modifier = getStatModifier(total);
 
         return (
             <div className="h-spacing">
                 <div className="c-stat">
-                    <TextInput
-                        id={id}
-                        labelText={`${text}:`}
-                        value={character[statId]}
-                        onChange={(e) => actions.updateValue('name', e.target.value)}
-                        type="number"
-                    />
-                    <Button text="Roll" onClick={() => actions.updateValue(statId, rollStat())}/>
 
-                    <svg className="" height="30" width="30">
-                        <use xlinkHref="#plus-icon" />
-                    </svg>
-
-                    <StatBox label="Racial" value={racialModifier} />
-
-                    <svg className="" height="30" width="30">
-                        <use xlinkHref="#equals-icon" />
-                    </svg>
+                    <strong>{text}</strong>
 
                     <StatBox label="Total" value={total} />
 
-                    <StatBox label="Mod" value={modifier} />
+                    <StatBox label="Racial" value={racialModifier} />
+
+                    <StatBox label="Misc" value={0} />
+
+                    <StatBox label="Base" value={character.abilities[abilityId]} />
+
+                    <Button text="Roll" onClick={() => actions.updateAbility(abilityId, rollStat())} />
+
+                    <Button text="+" onClick={() => actions.updateAbility(abilityId, character.abilities[abilityId] + 1)} />
+
+                    <Button text="-" onClick={() => actions.updateAbility(abilityId, character.abilities[abilityId] - 1)} />
+
                 </div>
 
        </div>
@@ -55,7 +46,7 @@ Stat.propTypes = {
     character: React.PropTypes.object.isRequired,
     id: React.PropTypes.string,
     text: React.PropTypes.string,
-    statId: React.PropTypes.string
+    abilityId: React.PropTypes.string
 };
 
 function mapStateToProps(state) {

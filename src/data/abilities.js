@@ -1,21 +1,21 @@
-export const stats = [
+export const abilities = [
     {
-        id: 'stat1',
+        id: 'ability1',
         name: 'Strength'
     }, {
-        id: 'stat2',
+        id: 'ability2',
         name: 'Dexterity'
     }, {
-        id: 'stat3',
+        id: 'ability3',
         name: 'Constitution'
     }, {
-        id: 'stat4',
+        id: 'ability4',
         name: 'Intelligence'
     }, {
-        id: 'stat5',
+        id: 'ability5',
         name: 'Wisdom'
     }, {
-        id: 'stat6',
+        id: 'ability6',
         name: 'Charisma'
     }
 ];

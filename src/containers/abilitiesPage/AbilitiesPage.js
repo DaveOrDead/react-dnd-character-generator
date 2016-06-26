@@ -1,34 +1,47 @@
 import React from 'react';
 
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import StatList from '../../components/statList';
+import * as actions from '../../actions/charGenActions';
+import {abilities} from '../../data/abilities';
+import Button from '../../components/button';
 
-import {stats} from '../../data/stats';
-
-const AbilitiesPage = ({character}) => {
+const AbilitiesPage = ({actions, character}) => {
 
         return (
             <div>
 
                 <StatList
                     race={character.race}
-                    data={stats}
+                    data={abilities}
                 />
-
+                <Button
+                    text="Roll all"
+                    onClick={() => actions.rollAllAbilities()}
+                />
             </div>
             );
     };
 
 AbilitiesPage.propTypes = {
-  character: React.PropTypes.object.isRequired
+    actions: React.PropTypes.object.isRequired,
+    character: React.PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
-  return {
-    character: state.character
-  };
+    return {
+        character: state.character
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(actions, dispatch)
+    };
 }
 
 export default connect(
-  mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(AbilitiesPage);

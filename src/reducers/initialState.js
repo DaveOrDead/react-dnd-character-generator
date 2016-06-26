@@ -1,11 +1,13 @@
 export default {
   character: {
-    stat1: 10,
-    stat2: 10,
-    stat3: 10,
-    stat4: 10,
-    stat5: 10,
-    stat6: 10,
+    abilities: {
+        ability1: 10,
+        ability2: 10,
+        ability3: 10,
+        ability4: 10,
+        ability5: 10,
+        ability6: 10,
+    },
     level:'1',
     skills: {},
     race: {

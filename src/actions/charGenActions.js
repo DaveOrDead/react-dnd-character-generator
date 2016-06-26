@@ -36,4 +36,20 @@ export function updateSkill(fieldName, value) {
     };
 }
 
+export function updateAbility(fieldName, value) {
+    return {
+        type: types.UPDATE_ABILITY,
+        fieldName,
+        value
+    };
+}
+
+export function rollAllAbilities(fieldName, value) {
+    return {
+        type: types.ROLL_ALL_ABILITIES,
+        fieldName,
+        value
+    };
+}
+
 

@@ -5,3 +5,7 @@ export const UPDATE_RACE = 'UPDATE RACE';
 export const UPDATE_CLASS = 'UPDATE CLASS';
 
 export const UPDATE_SKILL = 'UPDATE SKILL';
+
+export const UPDATE_ABILITY = 'UPDATE ABILITY';
+
+export const ROLL_ALL_ABILITIES = 'ROLL ALL ABILITIES';

@@ -7,7 +7,7 @@ const StatList = ({data, ...props}) => {
         {data.map(function(result) {
           return (<Stat
                        key={result.id}
-                       statId={result.id}
+                       abilityId={result.id}
                        text={result.name}
                        {...props}
                    />);
