@@ -9,7 +9,7 @@ import Button from '../../components/button';
 const SkillItem = ({item, actions, character, remainingSkillPoints}) => {
 
     const isClassSkill = character.class.classSkills[item.id];
-    const statModifier = getAbilityModifier(character.abilities[item.keyAbilityId]);
+    const statModifier = getAbilityModifier(character.abilities[item.abilityId]);
     const skillPoints = character.skills[item.id] || 0;
     const ranks = isClassSkill ? skillPoints : skillPoints / 2;
     const total = ranks + statModifier;
@@ -17,8 +17,9 @@ const SkillItem = ({item, actions, character, remainingSkillPoints}) => {
     return (
         <tr>
             <td>{item.name}<br />
-            ({item.keyAbilityId})</td>
-            <td>{isClassSkill ? 'C' : 'CC'}</td>
+            {isClassSkill ? 'Class, ' : 'Cross-class, '}
+            {item.untrained ? 'Untrained' : 'Trained'}
+            </td>
             <td><strong>{total}</strong></td>
             <td>{statModifier}</td>
             <td>{ranks}</td>
