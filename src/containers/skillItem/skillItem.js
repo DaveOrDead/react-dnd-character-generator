@@ -3,13 +3,13 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/charGenActions';
-import {getStatModifier} from '../../utils/getStatModifier';
+import {getAbilityModifier} from '../../utils/getAbilityModifier';
 import Button from '../../components/button';
 
 const SkillItem = ({item, actions, character, remainingSkillPoints}) => {
 
     const isClassSkill = character.class.classSkills[item.id];
-    const statModifier = getStatModifier(character[item.keyAbilityId]);
+    const statModifier = getAbilityModifier(character.abilities[item.keyAbilityId]);
     const skillPoints = character.skills[item.id] || 0;
     const ranks = isClassSkill ? skillPoints : skillPoints / 2;
     const total = ranks + statModifier;

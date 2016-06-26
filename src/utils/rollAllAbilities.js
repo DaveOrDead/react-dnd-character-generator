@@ -8,4 +8,4 @@ export const rollAllAbilities = (i = abilities.length, abilityObject = {}) => {
     } else {
         return abilityObject;
     }
-}
+};

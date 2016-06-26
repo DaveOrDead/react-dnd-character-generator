@@ -7,7 +7,7 @@ import Button from '../../components/button';
 import StatBox from '../../components/statBox';
 import {rollAbility} from '../../utils/rollAbility';
 
-const Stat = ({actions, character, text, id, abilityId}) => {
+const Stat = ({actions, character, text, abilityId}) => {
 
         const value = parseInt(character.abilities[abilityId]);
         const racialModifier = character.race.modifiers[abilityId] || 0;

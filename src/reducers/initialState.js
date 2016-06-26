@@ -6,7 +6,7 @@ export default {
         ability3: 10,
         ability4: 10,
         ability5: 10,
-        ability6: 10,
+        ability6: 10
     },
     level:'1',
     skills: {},

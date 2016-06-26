@@ -46,8 +46,7 @@ export function updateAbility(fieldName, value) {
     };
 }
 
-export function updateAllAbilities(fieldName, value) {
-
+export function updateAllAbilities() {
     return {
         type: types.UPDATE_ALL_ABILITIES,
         abilities: rollAllAbilities()
