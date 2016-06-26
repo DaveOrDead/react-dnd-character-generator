@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/charGenActions';
 import {abilities} from '../../data/abilities';
 import Button from '../../components/button';
+import Ability from '../ability';
 
 const ViewCharacterPage = ({actions, character}) => {
 console.log(character);
@@ -17,15 +18,18 @@ console.log(character);
                     <li>Class: {character.class.value}</li>
                     <li>Size: {character.race.size}</li>
                 </ul>
-                <h3 className="h-spacing-3x-small heading-sub-title">Abilities</h3>
-                <ul className="h-spacing">
-                    <li>Strength: {character.abilities.ability1}</li>
-                    <li>Dex: {character.abilities.ability2}</li>
-                    <li>Con: {character.abilities.ability3}</li>
-                    <li>Intelligence: {character.abilities.ability4}</li>
-                    <li>Wis: {character.abilities.ability5}</li>
-                    <li>Cha: {character.abilities.ability6}</li>
-                </ul>
+
+                <div className="h-spacing">
+                    {abilities.map(function(result) {
+                        return (<Ability
+                           key={result.id}
+                           abilityId={result.id}
+                           text={result.name}
+                           race={character.race}
+                       />);
+                    })}
+                </div>
+
                 <h3 className="h-spacing-3x-small heading-sub-title">Saving Throws</h3>
                 <ul className="h-spacing">
                     <li>Fortitude: {character.class.baseSavingThrows.fort}</li>
