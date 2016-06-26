@@ -6,6 +6,8 @@ import * as actions from '../../actions/charGenActions';
 import {abilities} from '../../data/abilities';
 import Button from '../../components/button';
 import Ability from '../ability';
+import StatBox from '../../components/statBox';
+import SavingThrows from '../../components/savingThrows';
 
 const ViewCharacterPage = ({actions, character}) => {
 console.log(character);
@@ -31,12 +33,15 @@ console.log(character);
                 </div>
 
                 <h3 className="h-spacing-3x-small heading-sub-title">Saving Throws</h3>
-                <ul className="h-spacing">
-                    <li>Fortitude: {character.class.baseSavingThrows.fort}</li>
-                    <li>Reflex: {character.class.baseSavingThrows.ref}</li>
-                    <li>Will: {character.class.baseSavingThrows.will}</li>
-                </ul>
-                    <div>Base Attack Bonus: {character.class.baseAttackBonus[0]}</div>
+
+                <SavingThrows
+                    baseSavingThrows={character.class.baseSavingThrows}
+                    abilities={character.abilities}
+                />
+
+                <h3 className="h-spacing-3x-small heading-sub-title">Base Attack Bonus:</h3>
+                 <StatBox label="BAB" value={character.class.baseAttackBonus[0]} />
+
 
             </div>
 
