@@ -36,6 +36,7 @@ Panel.propTypes = {
     element: PropTypes.string,
     isActive: PropTypes.bool,
     isHidden: PropTypes.bool,
+    isHollow: PropTypes.bool,
     isDark: PropTypes.bool
 };
 

@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Link } from 'react-router';
 import {existingCharacters} from '../../data/existingCharacters';
 import Panel from '../panel';
