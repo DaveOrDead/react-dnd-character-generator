@@ -1,6 +1,8 @@
 import * as types from '../constants/actionTypes';
 import {getRace} from '../utils/getRace';
+import {rollAllAbilities} from '../utils/rollAllAbilities';
 import {getCharacterClass} from '../utils/getCharacterClass';
+
 
 
 export function updateValue(fieldName, value) {
@@ -44,11 +46,11 @@ export function updateAbility(fieldName, value) {
     };
 }
 
-export function rollAllAbilities(fieldName, value) {
+export function updateAllAbilities(fieldName, value) {
+
     return {
-        type: types.ROLL_ALL_ABILITIES,
-        fieldName,
-        value
+        type: types.UPDATE_ALL_ABILITIES,
+        abilities: rollAllAbilities()
     };
 }
 

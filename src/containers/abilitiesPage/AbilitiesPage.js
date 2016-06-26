@@ -18,7 +18,7 @@ const AbilitiesPage = ({actions, character}) => {
                 />
                 <Button
                     text="Roll all"
-                    onClick={() => actions.rollAllAbilities()}
+                    onClick={() => actions.updateAllAbilities()}
                 />
             </div>
             );

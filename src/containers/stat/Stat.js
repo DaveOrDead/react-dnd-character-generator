@@ -5,7 +5,7 @@ import * as actions from '../../actions/charGenActions';
 
 import Button from '../../components/button';
 import StatBox from '../../components/statBox';
-import {rollStat} from '../../utils/rollStat';
+import {rollAbility} from '../../utils/rollAbility';
 
 const Stat = ({actions, character, text, id, abilityId}) => {
 
@@ -27,7 +27,7 @@ const Stat = ({actions, character, text, id, abilityId}) => {
 
                     <StatBox label="Base" value={character.abilities[abilityId]} />
 
-                    <Button text="Roll" onClick={() => actions.updateAbility(abilityId, rollStat())} />
+                    <Button text="Roll" onClick={() => actions.updateAbility(abilityId, rollAbility())} />
 
                     <Button text="+" onClick={() => actions.updateAbility(abilityId, character.abilities[abilityId] + 1)} />
 
