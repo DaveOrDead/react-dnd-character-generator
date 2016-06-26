@@ -3,7 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {skills} from '../../data/skills';
 
-import SkillItem from '../SkillItem';
+import SkillItem from '../skillItem';
 import {getInitialSkillPoints} from '../../utils/getInitialSkillPoints';
 import {getRemainingSkillPoints} from '../../utils/getRemainingSkillPoints';
 
