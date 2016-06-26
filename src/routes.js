@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import ViewCharacter from './components/viewCharacter';
+import ViewCharacterPage from './containers/viewCharacterPage';
 import CreateCharacter from './components/createCharacter';
 
 import App from './components/app';
@@ -20,6 +20,6 @@ export default (
             <Route path="skills" component={SkillsPage}/>
             <Route path="feats" component={FeatsPage}/>
         </Route>
-        <Route path="character/:charId" component={ViewCharacter}/>
+        <Route path="character/:charId" component={ViewCharacterPage}/>
     </Route>
 );

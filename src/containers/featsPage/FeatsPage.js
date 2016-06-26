@@ -1,11 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const FeatsPage = () => {
 
         return (
             <div>
-               <h1>Feats Page</h1>
-               <p>List of feats</p>
+               <h1>Complete</h1>
+               <Link to="/character/251">Save & View</Link>
+
             </div>
             );
     };

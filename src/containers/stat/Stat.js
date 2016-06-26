@@ -27,11 +27,11 @@ const Stat = ({actions, character, text, abilityId}) => {
 
                     <StatBox label="Base" value={character.abilities[abilityId]} />
 
-                    <Button text="Roll" onClick={() => actions.updateAbility(abilityId, rollAbility())} />
-
                     <Button text="+" onClick={() => actions.updateAbility(abilityId, character.abilities[abilityId] + 1)} />
 
                     <Button text="-" onClick={() => actions.updateAbility(abilityId, character.abilities[abilityId] - 1)} />
+
+                    <Button text="Roll" onClick={() => actions.updateAbility(abilityId, rollAbility())} />
 
                 </div>
 

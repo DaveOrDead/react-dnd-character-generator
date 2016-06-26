@@ -1,12 +1,16 @@
 import React from 'react';
+import Header from '../header';
 
 const App = (props) => {
   return (
     <div>
-        <header>
-            <h1>Character Generator</h1>
-        </header>
-        {props.children}
+
+        <Header text="Character Generator" />
+
+        <main className="l-container">
+            {props.children}
+        </main>
+
     </div>
   );
 };

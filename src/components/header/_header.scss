@@ -1,0 +1,14 @@
+/**
+ * Base.
+ */
+
+.c-header {
+    background-color: $g-color-grey-900;
+    color: $shell-g-color-white;
+    padding-top: rem($shell-g-spacing);
+    padding-bottom: rem($shell-g-spacing);
+}
+
+.c-header__title {
+    color: $shell-g-color-white;
+}
