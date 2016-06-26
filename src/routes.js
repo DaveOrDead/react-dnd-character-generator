@@ -12,16 +12,14 @@ import SkillsPage from './containers/skillsPage';
 import FeatsPage from './containers/featsPage';
 
 export default (
-        <div>
-            <Route path="/" component={App}>
-                <IndexRoute component={DashboardPage} />
-                <Route path="create" component={CreateCharacter}>
-                    <IndexRoute component={BasicsPage}/>
-                    <Route path="abilities" component={AbilitiesPage}/>
-                    <Route path="skills" component={SkillsPage}/>
-                    <Route path="feats" component={FeatsPage}/>
-                </Route>
-                <Route path="character/:charId" component={ViewCharacter}/>
-            </Route>
-        </div>
+    <Route path="/" component={App}>
+        <IndexRoute component={DashboardPage} />
+        <Route path="create" component={CreateCharacter}>
+            <IndexRoute component={BasicsPage}/>
+            <Route path="abilities" component={AbilitiesPage}/>
+            <Route path="skills" component={SkillsPage}/>
+            <Route path="feats" component={FeatsPage}/>
+        </Route>
+        <Route path="character/:charId" component={ViewCharacter}/>
+    </Route>
 );

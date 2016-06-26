@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import path from 'path';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 const autoprefixer = require('autoprefixer');
 
 const GLOBALS = {
@@ -23,6 +24,7 @@ export default {
   },
   plugins: [
     new webpack.DefinePlugin(GLOBALS), // Tells React to build in prod mode. https://facebook.github.io/react/downloads.htmlnew webpack.HotModuleReplacementPlugin());
+    new ExtractTextPlugin('styles.css'),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
@@ -35,8 +37,12 @@ export default {
       {test: /\.svg(\?v=\d+.\d+.\d+)?$/, loader: 'file-loader?limit=10000&mimetype=image/svg+xml'},
       {test: /\.(jpe?g|png|gif)$/i, loaders: ['file']},
       {test: /\.ico$/, loader: 'file-loader?name=[name].[ext]'},
-      {test: /(\.css|\.scss)$/, loader: 'style-loader!css-loader!postcss-loader!sass-loader'}
-    ],
-    postcss: [autoprefixer()]
-  }
+      {
+        test: /\.scss$/,
+        include: path.join(__dirname, 'src'),
+        loader: ExtractTextPlugin.extract('css?sourceMap!postcss!sass?sourceMap')
+      }
+    ]
+  },
+  postcss: [autoprefixer]
 };
