@@ -14,29 +14,30 @@ const Stat = ({actions, character, text, abilityId}) => {
         const total = value + racialModifier;
 
         return (
-            <div className="h-spacing">
-                <div className="c-stat">
+                <tr>
+                    <td>
+                        {text}
+                    </td>
+                    <td className="h-center-text">
+                        <strong>{total}</strong>
+                    </td>
+                    <td className="h-center-text">
+                        {racialModifier}
+                    </td>
+                    <td className="h-center-text">
+                        {'0'}
+                    </td>
+                    <td className="h-center-text">
+                        {character.abilities[abilityId]}
+                    </td>
+                    <td>
+                        <Button text="+" onClick={() => actions.updateAbility(abilityId, character.abilities[abilityId] + 1)} />
 
-                    <strong>{text}</strong>
-
-                    <StatBox label="Total" value={total} />
-
-                    <StatBox label="Racial" value={racialModifier} />
-
-                    <StatBox label="Misc" value={0} />
-
-                    <StatBox label="Base" value={character.abilities[abilityId]} />
-
-                    <Button text="+" onClick={() => actions.updateAbility(abilityId, character.abilities[abilityId] + 1)} />
-
-                    <Button text="-" disabled={character.abilities[abilityId] === 0} onClick={() => actions.updateAbility(abilityId, character.abilities[abilityId] - 1)} />
-
-                    <Button text="Roll" onClick={() => actions.updateAbility(abilityId, rollAbility())} />
-
-                </div>
-
-       </div>
-
+                        <Button text="-" disabled={character.abilities[abilityId] === 0} onClick={() => actions.updateAbility(abilityId, character.abilities[abilityId] - 1)} />
+                        &nbsp;
+                        <Button text="Roll" onClick={() => actions.updateAbility(abilityId, rollAbility())} />
+                    </td>
+                </tr>
         );
     };
 
