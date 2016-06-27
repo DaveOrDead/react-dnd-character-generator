@@ -8,7 +8,7 @@ import {getInitialSkillPoints} from '../../utils/getInitialSkillPoints';
 import {getRemainingSkillPoints} from '../../utils/getRemainingSkillPoints';
 
 const SkillsPage = ({character}) => {
-
+        console.log(character);
         const maxSkillPoints = getInitialSkillPoints(character.class.initSkillModifier, character.abilities.ability4);
 
         const remainingSkillPoints = getRemainingSkillPoints(character.skills, maxSkillPoints);

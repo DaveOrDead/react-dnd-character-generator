@@ -46,7 +46,7 @@ export const classes = [
     type: 'core',
     value: 'bard',
     hitDie: 6,
-    classSkills: [],
+    classSkills: {},
     initSkillModifier: 6,
     levelSkillModifier: 6,
     level: {
@@ -77,7 +77,7 @@ export const classes = [
     type: 'core',
     value: 'cleric',
     hitDie: 6,
-    classSkills: [],
+    classSkills: {},
     initSkillModifier: 2,
     levelSkillModifier: 2,
     level: {
@@ -108,7 +108,7 @@ export const classes = [
     type: 'core',
     value: 'druid',
     hitDie: 8,
-    classSkills: [],
+    classSkills: {},
     initSkillModifier: 4,
     levelSkillModifier: 4,
     level: {
@@ -139,7 +139,7 @@ export const classes = [
     type: 'core',
     value: 'fighter',
     hitDie: 10,
-    classSkills: [],
+    classSkills: {},
     initSkillModifier: 2,
     levelSkillModifier: 2,
     level: {
@@ -170,7 +170,7 @@ export const classes = [
     type: 'core',
     value: 'monk',
     hitDie: 8,
-    classSkills: [],
+    classSkills: {},
     initSkillModifier: 4,
     levelSkillModifier: 4,
     level: {
@@ -201,7 +201,7 @@ export const classes = [
     type: 'core',
     value: 'paladin',
     hitDie: 10,
-    classSkills: [],
+    classSkills: {},
     initSkillModifier: 2,
     levelSkillModifier: 2,
     level: {
@@ -232,7 +232,7 @@ export const classes = [
     type: 'core',
     value: 'ranger',
     hitDie: 8,
-    classSkills: [],
+    classSkills: {},
     initSkillModifier: 6,
     levelSkillModifier: 6,
     level: {
@@ -263,7 +263,7 @@ export const classes = [
     type: 'core',
     value: 'rogue',
     hitDie: 6,
-    classSkills: [],
+    classSkills: {},
     initSkillModifier: 8,
     levelSkillModifier: 8,
     level: {
@@ -294,7 +294,7 @@ export const classes = [
     type: 'core',
     value: 'sorceror',
     hitDie: 4,
-    classSkills: [],
+    classSkills: {},
     initSkillModifier: 2,
     levelSkillModifier: 2,
     level: {
@@ -325,7 +325,7 @@ export const classes = [
     type: 'core',
     value: 'wizard',
     hitDie: 4,
-    classSkills: [],
+    classSkills: {},
     initSkillModifier: 2,
     levelSkillModifier: 2,
     level: {

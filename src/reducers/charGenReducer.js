@@ -19,7 +19,7 @@ export default function charGenReducer(state = initialState.character, action) {
 
         case UPDATE_CLASS:
             newState = objectAssign({}, state);
-            newState.class = action.newClass;
+            newState.class = action.class;
             return newState;
 
         case UPDATE_SKILL:

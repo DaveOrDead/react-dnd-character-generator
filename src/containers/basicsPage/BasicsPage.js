@@ -36,7 +36,7 @@ const BasicsPage = ({actions, character}) => {
                     id="class"
                     options={classes}
                     name="selectedClass"
-                    onChange={(e) => actions.updateClass(e.target.value, character.level)}
+                    onChange={(e) => actions.updateClass(e.target.value, 1)}
                 />
 
                 <SelectList
