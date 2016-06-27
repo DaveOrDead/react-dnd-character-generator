@@ -1,7 +1,7 @@
 import {classes} from '../data/classes';
 
 export const getCharacterClass = (value, level) => {
-    console.log("got here");
+
     const newClass = classes.filter(c => c.value === value)[0];
 
     return {

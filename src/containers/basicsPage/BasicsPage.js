@@ -28,6 +28,7 @@ const BasicsPage = ({actions, character}) => {
                     id="race"
                     name="selectedRace"
                     options={races}
+                    value={character.race.value}
                     onChange={(e) => actions.updateRace('race', e.target.value)}
                 />
 
@@ -37,6 +38,7 @@ const BasicsPage = ({actions, character}) => {
                     options={classes}
                     name="selectedClass"
                     onChange={(e) => actions.updateClass(e.target.value, 1)}
+                    value={character.class.value}
                 />
 
                 <SelectList
@@ -44,6 +46,7 @@ const BasicsPage = ({actions, character}) => {
                     id="alignment"
                     options={alignments}
                     onChange={(e) => actions.updateValue('alignment', e.target.value)}
+                    value={character.alignment}
                 />
 
             </div>
