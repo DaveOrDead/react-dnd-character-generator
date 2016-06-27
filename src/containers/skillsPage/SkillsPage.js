@@ -25,7 +25,7 @@ const SkillsPage = ({character}) => {
                             <th className="h-center-text">Total</th>
                             <th className="h-center-text">Ability Mod</th>
                             <th className="h-center-text">Ranks</th>
-                            <th>Actions</th>
+                            <th><span className="h-hide-visually">Actions</span></th>
                         </tr>
                     </thead>
                     <tbody>
