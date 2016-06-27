@@ -4,7 +4,6 @@ import {bindActionCreators} from 'redux';
 import * as actions from '../../actions/charGenActions';
 
 import Button from '../../components/button';
-import StatBox from '../../components/statBox';
 import {rollAbility} from '../../utils/rollAbility';
 
 const Stat = ({actions, character, text, abilityId}) => {

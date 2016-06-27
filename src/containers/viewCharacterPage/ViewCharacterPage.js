@@ -43,7 +43,8 @@ const ViewCharacterPage = ({children, character}) => {
     };
 
 ViewCharacterPage.propTypes = {
-    character: React.PropTypes.object.isRequired
+    character: React.PropTypes.object.isRequired,
+    children: React.PropTypes.node
 };
 
 function mapStateToProps(state) {

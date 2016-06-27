@@ -5,7 +5,7 @@ import getClassNameString from '../../utils/getClassNameString';
 class Popover extends Component {
 
     render() {
-        const {direction, isVisible, heading} = this.props;
+        const {isVisible, heading} = this.props;
 
         const classList = getClassNameString({
             'c-popover': true,
@@ -32,7 +32,6 @@ class Popover extends Component {
 
 Popover.propTypes = {
     children: PropTypes.node,
-    direction: PropTypes.string,
     isVisible: PropTypes.bool,
     heading: PropTypes.string
 };

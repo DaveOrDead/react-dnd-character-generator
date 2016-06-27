@@ -1,7 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as actions from '../../actions/charGenActions';
 
 import Popover from '../../components/popover';
 import StatBox from '../../components/statBox';
@@ -12,7 +10,7 @@ import {getAbilityModifier} from '../../utils/getAbilityModifier';
 class Ability extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {popoverIsVisible: false}
+        this.state = {popoverIsVisible: false};
         // Manually bind this method to the component instance...
         this.togglePopover = this.togglePopover.bind(this);
     }
@@ -23,7 +21,7 @@ class Ability extends React.Component {
     }
     render() {
 
-        const { actions, character, text, abilityId } = this.props;
+        const { character, text, abilityId } = this.props;
 
         const value = parseInt(character.abilities[abilityId]);
         const racialModifier = character.race.modifiers[abilityId] || 0;
@@ -66,7 +64,6 @@ class Ability extends React.Component {
 
 
 Ability.propTypes = {
-    actions: React.PropTypes.object.isRequired,
     character: React.PropTypes.object.isRequired,
     id: React.PropTypes.string,
     text: React.PropTypes.string,
@@ -79,13 +76,6 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  };
-}
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Ability);
+  mapStateToProps
+  )(Ability);
