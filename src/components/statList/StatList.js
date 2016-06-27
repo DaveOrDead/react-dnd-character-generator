@@ -4,7 +4,7 @@ import Stat from '../../containers/stat';
 const StatList = ({data, ...props}) => {
     return (
         <div>
-        {data.map(function(result) {
+        {data.map(result => {
           return (<Stat
                        key={result.id}
                        abilityId={result.id}

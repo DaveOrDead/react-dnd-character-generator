@@ -29,7 +29,7 @@ const Stat = ({actions, character, text, abilityId}) => {
 
                     <Button text="+" onClick={() => actions.updateAbility(abilityId, character.abilities[abilityId] + 1)} />
 
-                    <Button text="-" onClick={() => actions.updateAbility(abilityId, character.abilities[abilityId] - 1)} />
+                    <Button text="-" disabled={character.abilities[abilityId] === 0} onClick={() => actions.updateAbility(abilityId, character.abilities[abilityId] - 1)} />
 
                     <Button text="Roll" onClick={() => actions.updateAbility(abilityId, rollAbility())} />
 

@@ -1,0 +1,22 @@
+/**
+ * Base.
+ */
+
+.c-footer {
+    background-color: #242424;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+}
+
+.c-footer a {
+    color: $shell-g-color-white;
+    display: block;
+    padding: rem($shell-g-spacing);
+    text-decoration: none;
+}
+
+.c-footer .is-active {
+    background-color: #141414;
+}

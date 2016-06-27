@@ -7,7 +7,7 @@ const ViewAbilityPage = ({character}) => {
 
         return (
                 <div>
-                    {abilities.map(function(ability) {
+                    {abilities.map(ability => {
                         return (<Ability
                            key={ability.id}
                            abilityId={ability.id}
