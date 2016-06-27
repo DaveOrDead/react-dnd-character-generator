@@ -1,0 +1,17 @@
+/**
+ * Base.
+ *
+ * 1. Required for `button` implementations.
+ */
+
+.c-card {
+    background-color: $shell-g-color-white;
+    border-radius: $shell-g-border-radius;
+    box-shadow: $g-box-shadow-panel;
+    display: block;
+    width: 100%; // [1]
+}
+
+.c-card__content {
+    padding: rem($shell-g-spacing);
+}

@@ -1,29 +1,38 @@
 import React from 'react';
 import { Link } from 'react-router';
 import {existingCharacters} from '../../data/existingCharacters';
-import Panel from '../panel';
+import Card from '../card';
+import Button from '../button';
 
 const DashboardPage = () => {
   return (
     <div>
         <div className="h-spacing-large">
             <Link to="/create">
-                <Panel isHollow={true}>
-                    Create New +
-                </Panel>
+                <Button text="Create New" element="span" />
             </Link>
         </div>
 
         <h3 className="heading-sub-title h-spacing-small">Existing</h3>
-        <ul className="l-grid">
+        <ul className="l-grid l-grid--gutter-vertical-large">
         {existingCharacters.map((item, i) =>
             <li key={i} className="l-grid__item">
 
                     <Link to={`/character/${item.id}`}>
-                        <Panel>
-                            <img src="http://lorempixel.com/people/125/150/" />
-                        </Panel>
-                        {item.name}
+                        <Card>
+                            <div className="c-card__image">
+                                <img src={`/images/${item.avatar}`} alt={`Avatar of ${item.name}`}
+                                />
+                            </div>
+                            <div className="c-card__content">
+                                <h4 className="heading-sub-title">{item.name}</h4>
+                                <ul>
+                                    <li>Level 1</li>
+                                    <li>Barbarian</li>
+                                </ul>
+                            </div>
+
+                        </Card>
                     </Link>
             </li>
         )}
