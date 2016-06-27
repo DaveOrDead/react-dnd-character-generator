@@ -1,8 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router';
+import { existingCharacters } from '../../data/existingCharacters';
 
-const ViewCharacterPage = ({children, character}) => {
+const ViewCharacterPage = ({children, character, params}) => {
+
+        if(params.charId) {
+             character = existingCharacters.filter(eC => eC.id === params.charId)[0];
+         }
 
         return (
             <div>
@@ -31,11 +36,11 @@ const ViewCharacterPage = ({children, character}) => {
                  <p>Experience</p>
 
                   <br/>
-                  <Link to="/character/:charId">Abilities</Link>
+                  <Link to={`/character/${params.charId}`}>Abilities</Link>
                   {' | '}
-                  <Link to="/character/:charId/combat">Combat</Link>
+                  <Link to={`/character/${params.charId}/combat`}>Combat</Link>
                   {' | '}
-                  <Link to="/character/:charId/appearance">Appearance</Link>
+                  <Link to={`/character/${params.charId}/appearance`}>Appearance</Link>
                     {children}
                         </div>
 
@@ -44,7 +49,8 @@ const ViewCharacterPage = ({children, character}) => {
 
 ViewCharacterPage.propTypes = {
     character: React.PropTypes.object.isRequired,
-    children: React.PropTypes.node
+    children: React.PropTypes.node,
+    params: React.PropTypes.object
 };
 
 function mapStateToProps(state) {
