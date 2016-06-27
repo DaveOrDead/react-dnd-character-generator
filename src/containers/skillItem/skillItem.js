@@ -17,12 +17,12 @@ const SkillItem = ({item, actions, character, remainingSkillPoints}) => {
     return (
         <tr>
             <td>{item.name}<br />
-            {isClassSkill ? 'Class, ' : 'Cross-class, '}
-            {item.untrained ? 'Untrained' : 'Trained'}
+            <small className="h-small-text">{isClassSkill ? 'Class, ' : 'Cross-class, '}
+            {item.untrained ? 'Untrained' : 'Trained'}</small>
             </td>
-            <td><strong>{total}</strong></td>
-            <td>{statModifier}</td>
-            <td>{ranks}</td>
+            <td className="h-center-text"><strong>{total}</strong></td>
+            <td className="h-center-text">{statModifier}</td>
+            <td className="h-center-text">{ranks}</td>
             <td>
                 <Button
                     disabled={skillPoints === 4 || remainingSkillPoints === 0}

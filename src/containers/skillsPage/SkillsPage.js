@@ -15,17 +15,16 @@ const SkillsPage = ({character}) => {
 
         return (
             <div>
-                <h1>Skills Page</h1>
                 <div className="">
-                    Skill points: {remainingSkillPoints} / {maxSkillPoints}
+                    Available skill points: {remainingSkillPoints} / <strong>{maxSkillPoints}</strong>
                 </div>
-                <table>
+                <table className="c-table">
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Total</th>
-                            <th>Ability Mod</th>
-                            <th>Ranks</th>
+                            <th className="h-center-text">Total</th>
+                            <th className="h-center-text">Ability Mod</th>
+                            <th className="h-center-text">Ranks</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
