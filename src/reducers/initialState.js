@@ -1,5 +1,6 @@
 export default {
   character: {
+    avatar: 'image_3.png',
     abilities: {
         ability1: 10,
         ability2: 10,

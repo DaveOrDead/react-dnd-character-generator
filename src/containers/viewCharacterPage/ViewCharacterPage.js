@@ -1,16 +1,19 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Link } from 'react-router';
-import { existingCharacters } from '../../data/existingCharacters';
+import {Link} from 'react-router';
+import {existingCharacters} from '../../data/existingCharacters';
 
 const ViewCharacterPage = ({children, character, params}) => {
 
         if(params.charId) {
              character = existingCharacters.filter(eC => eC.id === params.charId)[0];
-         }
+        }
 
         return (
             <div>
+                <img src={`/images/${character.avatar}`} alt={`Avatar of ${character.name}`} height="125" width="100"
+                                />
+
                 <ul className="h-spacing">
                     <li>Name: {character.name}</li>
                     <li>Level: {character.class.level}</li>
