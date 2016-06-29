@@ -9,3 +9,5 @@ export const UPDATE_SKILL = 'UPDATE SKILL';
 export const UPDATE_ABILITY = 'UPDATE ABILITY';
 
 export const UPDATE_ALL_ABILITIES = 'UPDATE ALL ABILITIES';
+
+export const FETCH_DATA = "FETCH DATA";
