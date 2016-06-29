@@ -2,6 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {existingCharacters} from '../../data/existingCharacters';
+import Footer from '../../components/footer';
+import StatBox from '../../components/statBox';
+
 
 const ViewCharacterPage = ({children, character, params}) => {
 
@@ -11,17 +14,25 @@ const ViewCharacterPage = ({children, character, params}) => {
 
         return (
             <div>
-                <img src={`/images/${character.avatar}`} alt={`Avatar of ${character.name}`} height="125" width="100"
-                                />
+                <div className="l-grid">
+                    <div className="l-grid__item">
+                        <img src={`/images/${character.avatar}`} alt={`Avatar of ${character.name}`} height="125" width="100"
+                                        />
+                    </div>
+                    <div className="l-grid__item">
+                        <ul className="h-spacing">
+                            <li>Name: {character.name}</li>
+                            <li>Level: {character.class.level}</li>
+                            <li>Class: {character.class.value}</li>
+                            <li>Race: {character.race.name}</li>
+                            <li>Alignment: {character.alignment}</li>
+                            <li>Deity: {character.deity}</li>
+                        </ul>
+                    </div>
+                </div>
 
-                <ul className="h-spacing">
-                    <li>Name: {character.name}</li>
-                    <li>Level: {character.class.level}</li>
-                    <li>Class: {character.class.value}</li>
-                    <li>Race: {character.race.name}</li>
-                    <li>Alignment: {character.alignment}</li>
-                    <li>Deity: {character.deity}</li>
-                </ul>
+                <StatBox label="XP" value={0} />
+
 
                 <div>Hit Points Total / current</div>
                 <p>Non lethal damage?</p>
@@ -30,22 +41,19 @@ const ViewCharacterPage = ({children, character, params}) => {
 
                 <p>Speed: {character.race.speed}</p>
 
-                 <p>Skills</p>
+                <p>Skills / Equipment / Feats</p>
 
-                 <p>Attacks</p>
 
-                 <p>Feats</p>
 
-                 <p>Experience</p>
+                {children}
 
-                  <br/>
-                  <Link to={`/character/${params.charId}`}>Abilities</Link>
-                  {' | '}
-                  <Link to={`/character/${params.charId}/combat`}>Combat</Link>
-                  {' | '}
-                  <Link to={`/character/${params.charId}/appearance`}>Appearance</Link>
-                    {children}
-                        </div>
+                <Footer>
+                    <Link to={`/character/${params.charId}`}>Abilities</Link>
+                    <Link to={`/character/${params.charId}/combat`}>Combat</Link>
+                    <Link to={`/character/${params.charId}/appearance`}>Appearance</Link>
+                </Footer>
+
+            </div>
 
             );
     };
