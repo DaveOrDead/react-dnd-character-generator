@@ -17,7 +17,7 @@ class AbilitiesPage extends React.Component {
 
     render() {
 
-        const {actions, character, abilities} = this.props;
+        const {abilities, actions, character} = this.props;
 
         return (
             <div>

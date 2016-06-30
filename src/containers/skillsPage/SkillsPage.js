@@ -1,13 +1,23 @@
 import React from 'react';
 
 import {connect} from 'react-redux';
-import {skills} from '../../data/skills';
+import {bindActionCreators} from 'redux';
+import * as apiActions from '../../actions/apiActions';
 
 import SkillItem from '../skillItem';
 import {getInitialSkillPoints} from '../../utils/getInitialSkillPoints';
 import {getRemainingSkillPoints} from '../../utils/getRemainingSkillPoints';
 
-const SkillsPage = ({character}) => {
+class SkillsPage extends React.Component {
+
+    componentWillMount() {
+        const {actions} = this.props;
+        actions.fetchData('skills');
+    }
+
+    render() {
+
+        const {character, skills} = this.props;
 
         const maxSkillPoints = getInitialSkillPoints(character.class.initSkillModifier, character.abilities.ability4);
 
@@ -45,18 +55,29 @@ const SkillsPage = ({character}) => {
 
             </div>
             );
-    };
+        }
+    }
 
 SkillsPage.propTypes = {
-  character: React.PropTypes.object.isRequired
+    actions: React.PropTypes.object,
+    character: React.PropTypes.object.isRequired,
+    skills: React.PropTypes.array
 };
 
 function mapStateToProps(state) {
   return {
+    skills: state.api.skills,
     character: state.character
   };
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(apiActions, dispatch)
+    };
+}
+
 export default connect(
-  mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(SkillsPage);
