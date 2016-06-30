@@ -13,10 +13,9 @@ export function updateValue(fieldName, value) {
     };
 }
 
-export function updateRace(fieldName, value) {
+export function updateRace(value) {
     return {
         type: types.UPDATE_RACE,
-        fieldName,
         value,
         race: getRace(value)
     };

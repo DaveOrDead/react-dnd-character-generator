@@ -36,24 +36,24 @@ class BasicsPage extends React.Component {
                     labelText="Race: "
                     id="race"
                     name="selectedRace"
-                    options={races || [{id: '123', value: 'Loading'}]}
-                    value={character.race.value}
-                    onChange={(e) => actions.charActions.updateRace('race', e.target.value)}
+                    options={races || [{id: '123', name: 'Loading'}]}
+                    value={character.race.id}
+                    onChange={(e) => actions.charActions.updateRace(e.target.value)}
                 />
 
                 <SelectList
                     labelText="Class: "
                     id="class"
-                    options={classes || [{id: '123', value: 'Loading'}]}
+                    options={classes || [{id: '123', name: 'Loading'}]}
                     name="selectedClass"
                     onChange={(e) => actions.charActions.updateClass(e.target.value, 1)}
-                    value={character.class.value}
+                    value={character.class.id}
                 />
 
                 <SelectList
                     labelText="Alignment: "
                     id="alignment"
-                    options={alignments || [{id: '123', value: 'Loading'}]}
+                    options={alignments || [{id: '123', name: 'Loading'}]}
                     onChange={(e) => actions.charActions.updateValue('alignment', e.target.value)}
                     value={character.alignment}
                 />

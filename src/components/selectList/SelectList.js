@@ -32,7 +32,7 @@ const SelectList = ({
                             <option
                                 key={i}
                                 disabled={item.disabled}
-                                value={item.value}>
+                                value={item.id}>
                                 {item.name}
                             </option>
                         )}
