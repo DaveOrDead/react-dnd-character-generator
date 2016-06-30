@@ -13,11 +13,12 @@ export function updateValue(fieldName, value) {
     };
 }
 
-export function updateRace(value) {
+export function updateRace(id) {
+    console.log(id);
     return {
         type: types.UPDATE_RACE,
-        value,
-        race: getRace(value)
+        id,
+        race: getRace(id)
     };
 }
 

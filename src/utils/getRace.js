@@ -1,3 +1,3 @@
 import {races} from '../data/races';
 
-export const getRace = value => races.filter(race => race.value === value)[0];
+export const getRace = id => races.filter(race => race.id === id)[0];
