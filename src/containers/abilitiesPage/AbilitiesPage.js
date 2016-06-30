@@ -2,12 +2,22 @@ import React from 'react';
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as actions from '../../actions/charGenActions';
-import {abilities} from '../../data/abilities';
+import * as charActions from '../../actions/charGenActions';
+import * as apiActions from '../../actions/apiActions';
+
 import Button from '../../components/button';
 import Stat from '../stat';
 
-const AbilitiesPage = ({actions, character}) => {
+class AbilitiesPage extends React.Component {
+
+    componentWillMount(){
+        const {actions} = this.props;
+        actions.apiActions.fetchData('abilities');
+    }
+
+    render() {
+
+        const {actions, character, abilities} = this.props;
 
         return (
             <div>
@@ -41,22 +51,28 @@ const AbilitiesPage = ({actions, character}) => {
 
             </div>
             );
-    };
+        }
+    }
 
 AbilitiesPage.propTypes = {
+    abilities: React.PropTypes.array,
     actions: React.PropTypes.object.isRequired,
     character: React.PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
     return {
+        abilities: state.api.abilities,
         character: state.character
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(actions, dispatch)
+        actions: {
+            apiActions: bindActionCreators(apiActions, dispatch),
+            charActions: bindActionCreators(charActions, dispatch)
+        }
     };
 }
 
