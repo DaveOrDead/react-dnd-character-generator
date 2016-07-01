@@ -10,9 +10,9 @@ import {getRemainingSkillPoints} from '../../utils/getRemainingSkillPoints';
 
 class SkillsPage extends React.Component {
 
-    componentWillMount() {
+    componentDidMount(){
         const {actions} = this.props;
-        actions.fetchData('skills');
+        actions.fetchDataIfNeeded('skills');
     }
 
     render() {
