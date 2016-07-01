@@ -17,7 +17,7 @@ class SkillsPage extends React.Component {
 
     render() {
 
-        const {character, skills} = this.props;
+        const {character, skills = [], isFetching = true} = this.props;
 
         const maxSkillPoints = getInitialSkillPoints(character.class.initSkillModifier, character.abilities.ability4);
 
@@ -25,6 +25,14 @@ class SkillsPage extends React.Component {
 
         return (
             <div>
+            {isFetching && skills.length === 0 &&
+                <h2>Loading...</h2>
+            }
+            {!isFetching && skills.length === 0 &&
+              <h2>Empty.</h2>
+            }
+            {skills.length > 0 &&
+            <div style={{ opacity: isFetching ? 0.5 : 1 }}>
                 <div className="">
                     Available skill points: {remainingSkillPoints} / <strong>{maxSkillPoints}</strong>
                 </div>
@@ -54,20 +62,25 @@ class SkillsPage extends React.Component {
 
 
             </div>
+            }
+            </div>
             );
         }
     }
 
 SkillsPage.propTypes = {
     actions: React.PropTypes.object,
-    character: React.PropTypes.object.isRequired,
-    skills: React.PropTypes.array
+    character: React.PropTypes.object,
+    skills: React.PropTypes.array,
+    isFetching: React.PropTypes.bool
 };
+
 
 function mapStateToProps(state) {
   return {
     skills: state.api.skills,
-    character: state.character
+    character: state.character,
+    isFetching: state.api.isFetching
   };
 }
 

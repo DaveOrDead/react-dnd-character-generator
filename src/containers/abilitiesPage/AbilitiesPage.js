@@ -17,38 +17,47 @@ class AbilitiesPage extends React.Component {
 
     render() {
 
-        const {abilities, actions, character} = this.props;
+        const {abilities = [], actions, character, isFetching = true} = this.props;
 
         return (
             <div>
-                <Button
-                    text="Roll all"
-                    onClick={() => actions.charActions.updateAllAbilities()}
-                />
-                <br />
-                <table className="c-table">
-                    <thead>
-                        <tr>
-                            <th>Ability</th>
-                            <th className="h-center-text">Total</th>
-                            <th className="h-center-text">Racial modifier</th>
-                            <th className="h-center-text">Misc</th>
-                            <th className="h-center-text">Base</th>
-                            <th><span className="h-hide-visually">Actions</span></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {abilities.map(ability => {
-                          return (<Stat
-                                       key={ability.id}
-                                       abilityId={ability.id}
-                                       text={ability.name}
-                                       race={character.race}
-                                   />);
-                        })}
-                    </tbody>
-                </table>
-
+                {isFetching && abilities.length === 0 &&
+                    <h2>Loading...</h2>
+                }
+                {!isFetching && abilities.length === 0 &&
+                    <h2>Empty.</h2>
+                }
+                {abilities.length > 0 &&
+                <div>
+                    <Button
+                        text="Roll all"
+                        onClick={() => actions.charActions.updateAllAbilities()}
+                    />
+                    <br />
+                    <table className="c-table">
+                        <thead>
+                            <tr>
+                                <th>Ability</th>
+                                <th className="h-center-text">Total</th>
+                                <th className="h-center-text">Racial modifier</th>
+                                <th className="h-center-text">Misc</th>
+                                <th className="h-center-text">Base</th>
+                                <th><span className="h-hide-visually">Actions</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {abilities.map(ability => {
+                              return (<Stat
+                                           key={ability.id}
+                                           abilityId={ability.id}
+                                           text={ability.name}
+                                           race={character.race}
+                                       />);
+                            })}
+                        </tbody>
+                    </table>
+                </div>
+                }
             </div>
             );
         }
@@ -57,11 +66,13 @@ class AbilitiesPage extends React.Component {
 AbilitiesPage.propTypes = {
     abilities: React.PropTypes.array,
     actions: React.PropTypes.object.isRequired,
-    character: React.PropTypes.object.isRequired
+    character: React.PropTypes.object.isRequired,
+    isFetching: React.PropTypes.bool
 };
 
 function mapStateToProps(state) {
     return {
+        isFetching: state.api.isFetching,
         abilities: state.api.abilities,
         character: state.character
     };
