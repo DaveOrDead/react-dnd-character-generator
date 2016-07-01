@@ -1,11 +1,11 @@
 import {classes} from '../data/classes';
 
-export const getCharacterClass = (value, level) => {
+export const getCharacterClass = (id, level) => {
 
-    const newClass = classes.filter(c => c.id === value)[0];
+    const newClass = classes.filter(c => c.id === id)[0];
 
     return {
-        value: newClass.value,
+        id: newClass.id,
         level,
         classSkills: newClass.classSkills,
         baseAttackBonus: newClass.level[level].baseAttackBonus,

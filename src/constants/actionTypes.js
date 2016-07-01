@@ -10,4 +10,6 @@ export const UPDATE_ABILITY = 'UPDATE ABILITY';
 
 export const UPDATE_ALL_ABILITIES = 'UPDATE ALL ABILITIES';
 
-export const FETCH_DATA = "FETCH DATA";
+export const REQUEST_DATA = 'REQUEST DATA';
+
+export const RECEIVE_DATA = 'RECEIVE DATA';

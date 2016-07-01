@@ -11,11 +11,11 @@ import SelectList from '../../components/selectList';
 
 class BasicsPage extends React.Component {
 
-    componentWillMount(){
+    componentDidMount(){
         const {actions} = this.props;
-        actions.apiActions.fetchData('alignments');
-        actions.apiActions.fetchData('classes');
-        actions.apiActions.fetchData('races');
+        actions.apiActions.fetchDataIfNeeded('alignments');
+        actions.apiActions.fetchDataIfNeeded('classes');
+        actions.apiActions.fetchDataIfNeeded('races');
     }
 
     render() {

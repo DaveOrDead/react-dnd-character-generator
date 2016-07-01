@@ -1,17 +1,24 @@
-import {FETCH_DATA} from '../constants/actionTypes';
-import objectAssign from 'object-assign';
+import {REQUEST_DATA, RECEIVE_DATA} from '../constants/actionTypes';
 
-export default function (state = [], action) {
-    let newState;
+export default function (state =  {isFetching: false,
+  didInvalidate: false }, action) {
 
-    switch(action.type){
+    switch(action.type) {
 
-        case FETCH_DATA:
-            newState = objectAssign({}, state);
-            newState[action.data] = action.payload.data;
-            return newState;
+        case REQUEST_DATA:
+            return Object.assign({}, state, {
+                isFetching: true,
+                didInvalidate: false
+            });
+
+        case RECEIVE_DATA:
+            return Object.assign({}, state, {
+                isFetching: false,
+                didInvalidate: false,
+                [action.data]: action.payload.data
+            });
 
         default :
             return state;
-        }
+    }
 }

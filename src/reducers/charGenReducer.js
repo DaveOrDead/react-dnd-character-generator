@@ -1,5 +1,4 @@
 import {UPDATE_VALUE, UPDATE_RACE, UPDATE_CLASS, UPDATE_SKILL, UPDATE_ABILITY, UPDATE_ALL_ABILITIES} from '../constants/actionTypes';
-import objectAssign from 'object-assign';
 import initialState from './initialState';
 
 export default function charGenReducer(state = initialState.character, action) {
@@ -8,34 +7,34 @@ export default function charGenReducer(state = initialState.character, action) {
     switch (action.type) {
 
         case UPDATE_VALUE:
-            newState = objectAssign({}, state);
-            newState[action.fieldName] = action.value;
-            return newState;
+            return Object.assign({}, state, {
+                [action.fieldName]: action.value
+            });
 
         case UPDATE_RACE:
-            newState = objectAssign({}, state);
-            newState[action.fieldName] = action.race;
-            return newState;
+            return Object.assign({}, state, {
+                race: action.race
+            });
 
         case UPDATE_CLASS:
-            newState = objectAssign({}, state);
-            newState.class = action.class;
-            return newState;
+            return Object.assign({}, state, {
+                class: action.class
+            });
 
         case UPDATE_SKILL:
-            newState = objectAssign({}, state);
+            newState = Object.assign({}, state);
             newState.skills[action.fieldName] = action.value;
             return newState;
 
         case UPDATE_ABILITY:
-            newState = objectAssign({}, state);
+            newState = Object.assign({}, state);
             newState.abilities[action.fieldName] = action.value;
             return newState;
 
         case UPDATE_ALL_ABILITIES:
-            newState = objectAssign({}, state);
-            newState.abilities = action.abilities;
-            return newState;
+            return Object.assign({}, state, {
+                abilities: action.abilities
+            });
 
         default:
         return state;

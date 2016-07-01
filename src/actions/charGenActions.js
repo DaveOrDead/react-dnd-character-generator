@@ -14,7 +14,6 @@ export function updateValue(fieldName, value) {
 }
 
 export function updateRace(id) {
-    console.log(id);
     return {
         type: types.UPDATE_RACE,
         id,
@@ -22,11 +21,11 @@ export function updateRace(id) {
     };
 }
 
-export function updateClass(value, level) {
+export function updateClass(id, level) {
     return {
         type: types.UPDATE_CLASS,
-        value,
-        class: getCharacterClass(value, level)
+        id,
+        class: getCharacterClass(id, level)
     };
 }
 

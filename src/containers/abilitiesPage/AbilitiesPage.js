@@ -10,9 +10,9 @@ import Stat from '../stat';
 
 class AbilitiesPage extends React.Component {
 
-    componentWillMount(){
+    componentDidMount(){
         const {actions} = this.props;
-        actions.apiActions.fetchData('abilities');
+        actions.apiActions.fetchDataIfNeeded('abilities');
     }
 
     render() {
