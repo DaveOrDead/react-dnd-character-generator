@@ -23,14 +23,14 @@ export default function charGenReducer(state = initialState.character, action) {
         case UPDATE_SKILL:
             return Object.assign({}, state, {
                 skills: {
-                    [action.fieldName]: action.value;
+                    [action.fieldName]: action.value
                 }
             });
 
         case UPDATE_ABILITY:
             return Object.assign({}, state, {
                 abilities: {
-                    [action.fieldName]: action.value;
+                    [action.fieldName]: action.value
                 }
             });
 
