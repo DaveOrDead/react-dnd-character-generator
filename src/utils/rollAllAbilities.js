@@ -1,9 +1,9 @@
 import {rollAbility} from './rollAbility';
-import {abilities} from '../data/abilities';
 
-export const rollAllAbilities = (i = abilities.length, abilityObject = {}) => {
+
+export const rollAllAbilities = (abilitiesList, i = abilitiesList.length, abilityObject = {}) => {
     if (i > 0) {
-        abilityObject[abilities[i - 1].id] = rollAbility();
+        abilityObject[abilitiesList[i - 1].id] = rollAbility();
         return rollAllAbilities(i - 1, abilityObject);
     } else {
         return abilityObject;

@@ -31,7 +31,7 @@ class AbilitiesPage extends React.Component {
                 <div>
                     <Button
                         text="Roll all"
-                        onClick={() => actions.charActions.updateAllAbilities()}
+                        onClick={() => actions.charActions.updateAllAbilities(abilities)}
                     />
                     <br />
                     <table className="c-table">
