@@ -3,7 +3,7 @@ import {getRace} from '../utils/getRace';
 import {rollAllAbilities} from '../utils/rollAllAbilities';
 import {getCharacterClass} from '../utils/getCharacterClass';
 
-
+import {fetchData} from './apiActions';
 
 export function updateValue(fieldName, value) {
     return {
@@ -17,7 +17,15 @@ export function updateRace(id) {
     return {
         type: types.UPDATE_RACE,
         id,
-        race: getRace(id)
+        race: fetchData(`races/${id}`)
+    };
+}
+
+export function fetchDataIfNeeded(data) {
+    return (dispatch, getState) => {
+        if (shouldFetchData(getState(), data)) {
+            return dispatch(fetchData(data));
+        }
     };
 }
 
