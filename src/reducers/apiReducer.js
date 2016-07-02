@@ -1,6 +1,6 @@
 import {REQUEST_DATA, RECEIVE_DATA} from '../constants/actionTypes';
 
-export default function (state =  {isFetching: false,
+export default function (state = {isFetching: false,
   didInvalidate: false }, action) {
 
     switch(action.type) {

@@ -1,9 +1,10 @@
+import axios from "axios";
+
 import * as types from '../constants/actionTypes';
-import {getRace} from '../utils/getRace';
 import {rollAllAbilities} from '../utils/rollAllAbilities';
 import {getCharacterClass} from '../utils/getCharacterClass';
 
-import {fetchData} from './apiActions';
+const ROOT_URL = 'https://dnd-character-gen-server.herokuapp.com/api';
 
 export function updateValue(fieldName, value) {
     return {
@@ -13,21 +14,40 @@ export function updateValue(fieldName, value) {
     };
 }
 
-export function updateRace(id) {
-    return {
-        type: types.UPDATE_RACE,
-        id,
-        race: fetchData(`races/${id}`)
+export function fetchCharData(dataType, url) {
+    return dispatch => {
+        dispatch(requestCharData(dataType, url));
+            return axios.get(`${ROOT_URL}/${url}`)
+            .then(payload => dispatch(receiveCharData(dataType, payload)));
     };
 }
 
-export function fetchDataIfNeeded(data) {
-    return (dispatch, getState) => {
-        if (shouldFetchData(getState(), data)) {
-            return dispatch(fetchData(data));
-        }
+function requestCharData(dataType, url) {
+    return {
+        type: types.REQUEST_CHAR_DATA,
+        dataType,
+        url
     };
 }
+
+function receiveCharData(dataType, payload) {
+    return {
+        type: types.RECEIVE_CHAR_DATA,
+        dataType,
+        payload
+    };
+}
+
+
+// export function updateRace(id) {
+//     return (dispatch) => {
+//         return dispatch(fetchCharData(data, types.UPDATE_RACE));
+//     };
+//     // return {
+//     //     type: types.UPDATE_RACE,
+//     //     race: fetchData(`races/${id}`)
+//     // };
+// }
 
 export function updateClass(id, level) {
     return {

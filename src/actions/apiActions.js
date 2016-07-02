@@ -40,7 +40,6 @@ function shouldFetchData(state, data) {
     const res = state.api[data];
 
     if (!res) {
-        console.log('not set');
         return true;
     } else if (res.isFetching) {
         return false;

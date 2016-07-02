@@ -15,7 +15,7 @@ class ViewAbilitiesPage extends React.Component {
 
     render() {
 
-        const {abilities = [], actions, character, isFetching = true} = this.props;
+        const {abilities = [], character, isFetching = true} = this.props;
 
         return (
                 <div>
@@ -61,8 +61,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         actions: bindActionCreators(apiActions, dispatch)
-    }
-};
+    };
+}
 
 
 export default connect(

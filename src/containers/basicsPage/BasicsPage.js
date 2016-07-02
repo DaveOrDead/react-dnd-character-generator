@@ -38,7 +38,7 @@ class BasicsPage extends React.Component {
                     name="selectedRace"
                     options={races || [{id: '123', name: 'Loading'}]}
                     value={character.race.id}
-                    onChange={(e) => actions.charActions.updateRace(e.target.value)}
+                    onChange={(e) => actions.charActions.fetchCharData('race', `races/${e.target.value}`)}
                 />
 
                 <SelectList
