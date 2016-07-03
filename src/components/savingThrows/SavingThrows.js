@@ -2,11 +2,11 @@ import React from 'react';
 import StatBox from '../statBox';
 import {getAbilityModifier} from '../../utils/getAbilityModifier';
 
-const SavingThrows = ({baseSavingThrows, abilities}) => {
+const SavingThrows = ({reflexSave, willSave, fortitudeSave, abilities}) => {
 
-    const reflex = baseSavingThrows.ref + getAbilityModifier(abilities.ability2);
-    const will = baseSavingThrows.will + getAbilityModifier(abilities.ability5);
-    const fortitude = baseSavingThrows.fort + getAbilityModifier(abilities.ability3);
+    const reflex = reflexSave + getAbilityModifier(abilities.ability2);
+    const will = willSave + getAbilityModifier(abilities.ability5);
+    const fortitude = fortitudeSave + getAbilityModifier(abilities.ability3);
 
     return (
         <div className="l-grid">
@@ -27,7 +27,9 @@ const SavingThrows = ({baseSavingThrows, abilities}) => {
 
 SavingThrows.propTypes = {
     abilities: React.PropTypes.object,
-    baseSavingThrows: React.PropTypes.object
+    fortitudeSave: React.PropTypes.integer,
+    willSave: React.PropTypes.integer,
+    reflexSave: React.PropTypes.integer
 };
 
 export default SavingThrows;

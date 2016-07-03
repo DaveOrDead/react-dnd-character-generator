@@ -49,11 +49,9 @@ export const existingCharacters = [
             initSkillModifier: 4,
             levelSkillModifier: 4,
             baseAttackBonus: [2],
-            baseSavingThrows: {
-                        fort: 2,
-                        ref: 0,
-                        will: 0
-                    }
+            fortitudeSave: 2,
+            reflexSave: 0,
+            willSave: 0
             },
         race: {
             name: 'elf',

@@ -4,7 +4,8 @@ import {Link} from 'react-router';
 import {existingCharacters} from '../../data/existingCharacters';
 import Footer from '../../components/footer';
 import StatBox from '../../components/statBox';
-
+import Meter from '../../components/meter';
+import {getAbilityModifier} from '../../utils/getAbilityModifier';
 
 const ViewCharacterPage = ({children, character, params}) => {
 
@@ -12,19 +13,25 @@ const ViewCharacterPage = ({children, character, params}) => {
              character = existingCharacters.filter(eC => eC.id === params.charId)[0];
         }
 
+        const dexMod = getAbilityModifier(character.abilities.ability2);
+
+        const initiativeMod = dexMod;
+
         return (
             <div>
                 <div className="l-grid">
                     <div className="l-grid__item">
                         <img src={`/images/${character.avatar}`} alt={`Avatar of ${character.name}`} height="125" width="100"
                                         />
+                        Level: {character.class.level}
                     </div>
                     <div className="l-grid__item">
-                        <ul className="h-spacing">
-                            <li>Name: {character.name}</li>
-                            <li>Level: {character.class.level}</li>
-                            <li>Class: {character.class.value}</li>
-                            <li>Race: {character.race.name}</li>
+                        <h3 className="heading-sub-title">{character.name}</h3>
+
+                        <Meter max={150} value={45} />
+
+                        <ul>
+                            <li>{character.race.name}, {character.class.value}</li>
                             <li>Alignment: {character.alignment}</li>
                             <li>Deity: {character.deity}</li>
                         </ul>
@@ -37,7 +44,7 @@ const ViewCharacterPage = ({children, character, params}) => {
                 <div>Hit Points Total / current</div>
                 <p>Non lethal damage?</p>
 
-                <p>Initiative: Total = dex mod + misc</p>
+                <StatBox label="Initiative" value={initiativeMod} />
 
                 <p>Speed: {character.race.speed}</p>
 

@@ -19,12 +19,14 @@ const ViewCombatPage = ({character}) => {
                 <h3 className="h-spacing-3x-small heading-sub-title">Saving Throws</h3>
 
                 <SavingThrows
-                    baseSavingThrows={character.class.baseSavingThrows}
+                    reflexSave={character.class.reflex_save}
+                    fortitudeSave={character.class.fortitude_save}
+                    willSave={character.class.will_save}
                     abilities={character.abilities}
                 />
 
                 <h3 className="h-spacing-3x-small heading-sub-title">Base Attack Bonus:</h3>
-                 <StatBox label="BAB" value={character.class.baseAttackBonus[0]} />
+                 <StatBox label="BAB" value={character.class.baseAttackBonus} />
 
                  <div style={{position: 'relative'}}>
                     <p>Grapple: Total = </p>

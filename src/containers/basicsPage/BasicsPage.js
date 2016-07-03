@@ -46,7 +46,7 @@ class BasicsPage extends React.Component {
                     id="class"
                     options={classes || [{id: '123', name: 'Loading'}]}
                     name="selectedClass"
-                    onChange={(e) => actions.charActions.updateClass(e.target.value, 1)}
+                    onChange={(e) => {(e) => actions.charActions.fetchCharData('class', `races/${e.target.value}`,character.level)}}
                     value={character.class.id}
                 />
 

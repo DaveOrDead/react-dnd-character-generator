@@ -2,7 +2,7 @@ import axios from "axios";
 
 import * as types from '../constants/actionTypes';
 import {rollAllAbilities} from '../utils/rollAllAbilities';
-import {getCharacterClass} from '../utils/getCharacterClass';
+
 
 const ROOT_URL = 'https://dnd-character-gen-server.herokuapp.com/api';
 
@@ -35,25 +35,6 @@ function receiveCharData(dataType, payload) {
         type: types.RECEIVE_CHAR_DATA,
         dataType,
         payload
-    };
-}
-
-
-// export function updateRace(id) {
-//     return (dispatch) => {
-//         return dispatch(fetchCharData(data, types.UPDATE_RACE));
-//     };
-//     // return {
-//     //     type: types.UPDATE_RACE,
-//     //     race: fetchData(`races/${id}`)
-//     // };
-// }
-
-export function updateClass(id, level) {
-    return {
-        type: types.UPDATE_CLASS,
-        id,
-        class: getCharacterClass(id, level)
     };
 }
 
