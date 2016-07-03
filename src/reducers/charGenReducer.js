@@ -1,7 +1,8 @@
-import {UPDATE_VALUE, UPDATE_RACE, UPDATE_CLASS, UPDATE_SKILL, UPDATE_ABILITY, UPDATE_ALL_ABILITIES, REQUEST_CHAR_DATA,RECEIVE_CHAR_DATA} from '../constants/actionTypes';
+import {UPDATE_VALUE, UPDATE_CLASS, UPDATE_SKILL, UPDATE_ABILITY, UPDATE_ALL_ABILITIES, REQUEST_CHAR_DATA,RECEIVE_CHAR_DATA} from '../constants/actionTypes';
 import initialState from './initialState';
 
 export default function charGenReducer(state = initialState.character, action) {
+
     let newState;
 
     switch (action.type) {
@@ -45,6 +46,6 @@ export default function charGenReducer(state = initialState.character, action) {
             });
 
         default:
-        return state;
+            return state;
     }
 }

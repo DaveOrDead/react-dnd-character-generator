@@ -6,17 +6,14 @@ import StatBox from '../../components/statBox';
 import {getAbilityModifier} from '../../utils/getAbilityModifier';
 
 
-
 class Ability extends React.Component {
     constructor(props) {
         super(props);
         this.state = {popoverIsVisible: false};
-        // Manually bind this method to the component instance...
         this.togglePopover = this.togglePopover.bind(this);
     }
 
     togglePopover() {
-        // ...to ensure that 'this' refers to the component instance here.
         this.setState({popoverIsVisible: !this.state.popoverIsVisible});
     }
     render() {

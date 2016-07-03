@@ -1,8 +1,8 @@
 import axios from "axios";
 
 import {REQUEST_DATA, RECEIVE_DATA} from '../constants/actionTypes';
+import {ROOT_URL} from '../constants/urls';
 
-const ROOT_URL = 'https://dnd-character-gen-server.herokuapp.com/api';
 
 export function fetchDataIfNeeded(data) {
     return (dispatch, getState) => {
@@ -37,14 +37,14 @@ function receiveData(data, payload) {
 
 function shouldFetchData(state, data) {
 
-    const res = state.api[data];
+    const results = state.api[data];
 
-    if (!res) {
+    if (!results) {
         return true;
-    } else if (res.isFetching) {
+    } else if (results.isFetching) {
         return false;
     } else {
-        return res.didInvalidate;
+        return results.didInvalidate;
     }
 }
 

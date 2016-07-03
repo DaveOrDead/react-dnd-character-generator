@@ -12,12 +12,11 @@ const Meter = ({
     const barStyle = {
         transform: max ? `scaleX(${value / max})` : ''
     };
-console.log(barStyle);
 
     const classList = getClassNameString({
         'c-meter': true,
         'is-active': isActive,
-        'is-empty': isEmpty,
+        'is-empty': isEmpty
     });
 
     return (
