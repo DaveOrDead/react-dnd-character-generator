@@ -1,0 +1,31 @@
+
+.c-meter {
+    background: $g-color-grey-300;
+    height: rem($shell-g-spacing-2x-small);
+    position: relative;
+}
+
+/**
+ * The status bar.
+ * Changes based on the percentage of the meter this is animatable, and relies
+ * upon transform: scaleX() to provide a performant animation rather than width
+ */
+.c-meter__fill {
+    background-color: $g-color-brand;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform-origin: 0 0;
+    transition: background 0.2s ease, transform 0.3s ease;
+}
+
+.c-meter.is-warning .c-meter__fill {
+    background-color: $g-color-red-500;
+}
+
+.c-meter.is-empty .c-meter__fill {
+    background-color: transparent;
+}
