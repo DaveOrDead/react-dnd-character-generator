@@ -9,7 +9,7 @@ export default {
         ability5: 10,
         ability6: 10
     },
-    level:'1',
+    level:'lvl1',
     skills: {},
     race: {
         name: 'human',
@@ -28,8 +28,7 @@ export default {
                 sk35: true,
                 sk36: true
             },
-        value: 'barbarian',
-        level: 1,
+        id: 'c1',
         initSkillModifier: 4,
         levelSkillModifier: 4,
         baseAttackBonus: [2],
