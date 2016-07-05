@@ -11,19 +11,19 @@ const DashboardPage = () => {
   return (
     <div>
 
-        <div className="subheading">
-            <h3 className="heading-sub-title h-spacing-small">Character</h3>
+        <div className="c-sub-header">
+            <SearchInput
+                isLabelHidden={true}
+                labelText="Search existing characters"
+                placeholder="Search characters"
+            />
         </div>
 
-        <SearchInput
-            isLabelHidden={true}
-            labelText="Search existing characters"
-        />
 
-        <ul className="l-grid l-grid--gutter-vertical-large">
+
+        <ul>
         {existingCharacters.map((item, i) =>
-            <li key={i} className="l-grid__item">
-
+            <li key={i}>
                 <Link to={`/character/${item.id}`}>
                     <Card>
                         <div className="c-card__image">
@@ -37,7 +37,6 @@ const DashboardPage = () => {
                                 <li>Barbarian</li>
                             </ul>
                         </div>
-
                     </Card>
                 </Link>
             </li>
@@ -48,7 +47,7 @@ const DashboardPage = () => {
             <Link to="/create">
                 <Button text="Create New" element="span" />
             </Link>
-            <div>Face</div>
+            <span />
         </Footer>
     </div>
   );

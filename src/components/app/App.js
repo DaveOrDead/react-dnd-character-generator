@@ -7,7 +7,7 @@ const App = (props) => {
 
         <Header text="Character Generator" />
 
-        <main className="l-container h-spacing-large">
+        <main className="h-spacing-large">
             {props.children}
         </main>
 
