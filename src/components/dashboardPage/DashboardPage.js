@@ -5,21 +5,20 @@ import Card from '../card';
 import Button from '../button';
 import Footer from '../footer';
 import SearchInput from '../searchInput';
+import SubHeader from '../subHeader';
 
 
 const DashboardPage = () => {
   return (
     <div>
 
-        <div className="c-sub-header">
+        <SubHeader>
             <SearchInput
                 isLabelHidden={true}
                 labelText="Search existing characters"
                 placeholder="Search characters"
             />
-        </div>
-
-
+        </SubHeader>
 
         <ul>
         {existingCharacters.map((item, i) =>
