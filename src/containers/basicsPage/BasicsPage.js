@@ -23,7 +23,7 @@ class BasicsPage extends React.Component {
         const {actions, character, alignments, races, classes} = this.props;
 
         return (
-            <div>
+            <div className="l-container">
                 <TextInput
                     labelText="Name: "
                     value={character.name}

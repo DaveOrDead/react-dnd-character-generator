@@ -26,14 +26,13 @@ class ViewAbilitiesPage extends React.Component {
                     <h2>Empty.</h2>
                     }
                     {abilities.length > 0 &&
-                    <div>
+                    <div className="l-grid l-grid--gutter-vertical-x-large">
                         {abilities.map(ability => {
-                            return (<Ability
-                               key={ability.id}
+                            return (<div key={ability.id} className="l-grid__item l-grid__item--4-col"><Ability
                                abilityId={ability.id}
                                text={ability.name}
                                race={character.race}
-                           />);
+                           /></div>);
                         })}
                     </div>
                 }

@@ -17,8 +17,18 @@
 }
 
 .c-stat {
-    align-items: flex-end;
-    display: flex;
+    font-weight: 300;
+    text-align: left;
+}
+.c-stat__number {
+    display: block;
+    font-size: rem($shell-g-font-size-2x-large)
+}
+.c-stat__description {
+    color: $g-color-grey-700;
+    display: block;
+    font-size: rem($shell-g-font-size-2x-small);
+    text-transform: uppercase;
 }
 
 .c-stat .c-text-input {
