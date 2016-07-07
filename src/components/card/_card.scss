@@ -26,3 +26,8 @@
     width: rem(50);
     overflow: hidden;
 }
+
+.c-card__description {
+    color: $g-color-grey-600;
+    font-size: rem($shell-g-font-size-2x-small);
+}

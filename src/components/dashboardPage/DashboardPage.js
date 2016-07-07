@@ -31,7 +31,7 @@ const DashboardPage = () => {
                         </div>
                         <div className="c-card__content">
                             <h4 className="heading-sub-title">{item.name}</h4>
-                            <ul>
+                            <ul className="c-card__description">
                                 <li>Level 1</li>
                                 <li>Barbarian</li>
                             </ul>

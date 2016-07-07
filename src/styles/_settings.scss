@@ -201,11 +201,6 @@ $g-form-validation-error: $g-color-red-500;
    ========================================================================= */
 
 /**
- * N.B. these should be treated as CMDS settings.
- */
-
-
-/**
  * Active `box-shadow`.
  */
 
@@ -252,12 +247,7 @@ $g-box-shadow-select-list: inset 0 2px 0 0 #fff,
 
 
 
-/* 3. Transitions and Animations
-   ========================================================================= */
 
-/**
- * @todo These should be treated as CMDS settings.
- */
 
 
 
@@ -271,30 +261,13 @@ $g-box-shadow-select-list: inset 0 2px 0 0 #fff,
 
 $shell-g-z-layers: (
     'popover': 5,
-    'app-header': 4,
-    'app-stage-details': 3,
-    'app-stage': 2,
-    'app-stage-details-elements': (
-        'pinned-item': 1
-    ),
-    'app-stage-elements': (
-        'delete-step': 1
-    ),
-    'workflow-builder-delete-step': (
-        'button': 3,
-        'confirmation-message': 2,
-        'tooltip': 1
-    ),
-    'toggle-switch': (
-        'radio-button-checked': 1,
-        'switch-indicator': 2,
-        'label': 3,
-        'radio-button': 4
-    ),
     'base': 1,
     'underneath': -1
 );
 
+a {
+    text-decoration: none !important;
+}
 
 /**
  * Base (Local).

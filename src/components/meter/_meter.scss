@@ -1,7 +1,9 @@
 
 .c-meter {
     background: $g-color-grey-300;
-    height: rem($shell-g-spacing-2x-small);
+    border-radius: 2em;
+    height: rem($shell-g-spacing-x-small);
+    overflow: hidden;
     position: relative;
 }
 
