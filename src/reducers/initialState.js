@@ -29,8 +29,8 @@ export default {
                 sk36: true
             },
         id: 'c1',
-        initSkillModifier: 4,
-        levelSkillModifier: 4,
+        initial_skill_modifier: 4,
+        level_skill_modifier: 4,
         baseAttackBonus: [2],
         baseSavingThrows: {
                     fort: 2,
