@@ -19,41 +19,55 @@ class DashboardPage extends React.Component {
 
   render () {
 
-    const {characters, isFetching = true} = this.props;
+    const {characters = [], isFetching = true} = this.props;
 
     return (
         <div>
+            {isFetching && characters.length === 0 &&
+                <h2>Loading...</h2>
+            }
+            {!isFetching && characters.length === 0 &&
+              <div>
+                <h2>You have no characters</h2>
 
-            <SubHeader>
-                <SearchInput
-                    isLabelHidden={true}
-                    labelText="Search existing characters"
-                    placeholder="Search characters"
-                />
-            </SubHeader>
+                <Link to="/create">
+                    <Button text="Create New" element="span" />
+                </Link>
+            </div>
+            }
+            {characters.length > 0 &&
+            <div>
+                <SubHeader>
+                    <SearchInput
+                        isLabelHidden={true}
+                        labelText="Search existing characters"
+                        placeholder="Search characters"
+                    />
+                </SubHeader>
 
-            <ul>
-            {characters.map((item, i) =>
-                <li key={i}>
-                    <Link to={`/character/${item.id}`}>
-                        <Card>
-                            <div className="c-card__image">
-                                <img src={`/images/${item.avatar}`} alt={`Avatar of ${item.name}`}
-                                />
-                            </div>
-                            <div className="c-card__content">
-                                <h4 className="heading-sub-title">{item.name}</h4>
-                                <ul className="c-card__description">
-                                    <li>Level 1</li>
-                                    <li>Barbarian</li>
-                                </ul>
-                            </div>
-                        </Card>
-                    </Link>
-                </li>
-            )}
-            </ul>
-
+                <ul>
+                {characters.map((item, i) =>
+                    <li key={i}>
+                        <Link to={`/character/${item.id}`}>
+                            <Card>
+                                <div className="c-card__image">
+                                    <img src={`/images/${item.avatar}`} alt={`Avatar of ${item.name}`}
+                                    />
+                                </div>
+                                <div className="c-card__content">
+                                    <h4 className="heading-sub-title">{item.name}</h4>
+                                    <ul className="c-card__description">
+                                        <li>Level 1</li>
+                                        <li>Barbarian</li>
+                                    </ul>
+                                </div>
+                            </Card>
+                        </Link>
+                    </li>
+                )}
+                </ul>
+            </div>
+            }
             <Footer>
                 <Link to="/create">
                     <Button text="Create New" element="span" />
