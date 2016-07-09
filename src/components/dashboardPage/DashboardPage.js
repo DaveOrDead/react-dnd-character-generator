@@ -57,8 +57,8 @@ class DashboardPage extends React.Component {
                                 <div className="c-card__content">
                                     <h4 className="heading-sub-title">{item.name}</h4>
                                     <ul className="c-card__description">
-                                        <li>Level 1</li>
-                                        <li>Barbarian</li>
+                                        <li>{item.level}</li>
+                                        <li>{item.race}, {item.class}</li>
                                     </ul>
                                 </div>
                             </Card>
