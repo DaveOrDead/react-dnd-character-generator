@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as apiActions from '../../actions/apiActions';
 import {Link} from 'react-router';
-import {existingCharacters} from '../../data/existingCharacters';
 import Container from '../../components/container';
 import Grid from '../../components/grid';
 import GridItem from '../../components/gridItem';
@@ -10,73 +11,96 @@ import StatBox from '../../components/statBox';
 import Meter from '../../components/meter';
 import {getAbilityModifier} from '../../utils/getAbilityModifier';
 
-const ViewCharacterPage = ({children, character, params}) => {
 
-        if(params.charId) {
-             character = existingCharacters.filter(eC => eC.id === params.charId)[0];
-        }
+class ViewCharacterPage extends React.Component {
 
-        const dexMod = getAbilityModifier(character.abilities.ability2);
+    componentDidMount(){
+        const {actions, params} = this.props;
+        actions.fetchDataIfNeeded('characters', params.charId);
+    }
 
-        const initiativeMod = dexMod;
+    render () {
+
+        const {basics = {}, children, params, isFetching = true} = this.props;
+
+        // const dexMod = getAbilityModifier(character.ability2);
+
+        const initiativeMod = 2;
 
         return (
-            <Container gutter="small">
-                <Grid>
-                    <GridItem>
-                        <img src={`/images/${character.avatar}`} alt={`Avatar of ${character.name}`} height="125" width="100"
-                                        />
-                        Level: {character.class.level}
-                    </GridItem>
-                    <GridItem>
-                        <h3 className="heading-sub-title">{character.name}</h3>
+                <Container gutter="small">
+                    {isFetching && !basics &&
+                    <h2>Loading...</h2>
+                    }
+                    {!isFetching && !basics &&
+                    <h2>Empty.</h2>
+                    }
+                    {basics &&
+                    <Grid>
+                        <GridItem>
+                            <img src={`/images/${basics.avatar}`} alt={`Avatar of ${basics.name}`} height="125" width="100"
+                                            />
+                            Level: {basics.level}
+                        </GridItem>
+                        <GridItem>
+                            <h3 className="heading-sub-title">{basics.name}</h3>
 
-                        HP: <Meter max={150} value={45} />
+                            HP: <Meter max={150} value={45} />
 
-                        XP: <Meter max={150} value={45} />
+                            XP: <Meter max={150} value={45} />
 
-                        <ul>
-                            <li>{character.race.name}, {character.class.value}</li>
-                            <li>Alignment: {character.alignment}</li>
-                            <li>Deity: {character.deity}</li>
-                        </ul>
-                    </GridItem>
-                </Grid>
+                            <ul>
+                                <li>{basics.race}, {basics.class}</li>
+                                <li>Alignment: {basics.alignment}</li>
+                                <li>Deity: {basics.deity}</li>
+                            </ul>
+                        </GridItem>
+                    </Grid>
+                    }
+                    <p>Non lethal damage?</p>
 
-                <p>Non lethal damage?</p>
+                    <StatBox label="Initiative" value={initiativeMod} />
 
-                <StatBox label="Initiative" value={initiativeMod} />
+                    <p>Speed: 10000ft</p>
 
-                <p>Speed: {character.race.speed || '30ft'}</p>
+                    <Footer>
+                        <Link to={`/character/${params.charId}`}>Abilities</Link>
+                        <Link to={`/character/${params.charId}/combat`}>Combat</Link>
+                        <Link to={`/character/${params.charId}/appearance`}>Appearance</Link>
+                        <p>Skills</p>
+                        <p>Equipment</p>
+                        <p>Feats</p>
+                    </Footer>
 
-                 {children}
-
-                <Footer>
-                    <Link to={`/character/${params.charId}`}>Abilities</Link>
-                    <Link to={`/character/${params.charId}/combat`}>Combat</Link>
-                    <Link to={`/character/${params.charId}/appearance`}>Appearance</Link>
-                    <p>Skills</p>
-                    <p>Equipment</p>
-                    <p>Feats</p>
-                </Footer>
-
-            </Container>
-
+                </Container>
             );
-    };
+        }
+    }
 
 ViewCharacterPage.propTypes = {
-    character: React.PropTypes.object.isRequired,
+    actions: React.PropTypes.object.isRequired,
+    basics: React.PropTypes.object,
     children: React.PropTypes.node,
+    isFetching: React.PropTypes.bool,
     params: React.PropTypes.object
 };
 
 function mapStateToProps(state) {
     return {
-        character: state.character
+        isFetching: state.api.isFetching,
+        abilities: state.api.abilities,
+        basics: state.api.characters
     };
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(apiActions, dispatch)
+    };
+}
+
+
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(ViewCharacterPage);

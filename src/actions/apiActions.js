@@ -4,26 +4,35 @@ import {REQUEST_DATA, RECEIVE_DATA} from '../constants/actionTypes';
 import {ROOT_URL} from '../constants/urls';
 
 
-export function fetchDataIfNeeded(data) {
+export function fetchDataIfNeeded(data, id) {
     return (dispatch, getState) => {
-        if (shouldFetchData(getState(), data)) {
-            return dispatch(fetchData(data));
+        if (shouldFetchData(getState(), data, id)) {
+            return dispatch(fetchData(data, id));
         }
     };
 }
 
-function fetchData(data) {
+function constructURL(data, id) {
+    let url = `${ROOT_URL}/${data}`;
+    if(id){
+        url += `/${id}`;
+    }
+    return url;
+}
+
+function fetchData(data, id) {
     return dispatch => {
-        dispatch(requestData(data));
-            return axios.get(`${ROOT_URL}/${data}`)
+        dispatch(requestData(data, id));
+            return axios.get(constructURL(data, id))
             .then(payload => dispatch(receiveData(data, payload)));
     };
 }
 
-function requestData(data) {
+function requestData(data, id) {
     return {
         type: REQUEST_DATA,
-        data
+        data,
+        id
     };
 }
 
