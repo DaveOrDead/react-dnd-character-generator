@@ -9,7 +9,7 @@ import GridItem from '../../components/gridItem';
 import Footer from '../../components/footer';
 import StatBox from '../../components/statBox';
 import Meter from '../../components/meter';
-import {getAbilityModifier} from '../../utils/getAbilityModifier';
+// import {getAbilityModifier} from '../../utils/getAbilityModifier';
 
 
 class ViewCharacterPage extends React.Component {
@@ -23,7 +23,7 @@ class ViewCharacterPage extends React.Component {
 
         const {basics = {}, children, params, isFetching = true} = this.props;
 
-        // const dexMod = getAbilityModifier(character.ability2);
+        //const dexMod = getAbilityModifier(character.ability2);
 
         const initiativeMod = 2;
 
@@ -62,6 +62,8 @@ class ViewCharacterPage extends React.Component {
                     <StatBox label="Initiative" value={initiativeMod} />
 
                     <p>Speed: 10000ft</p>
+
+                    {children}
 
                     <Footer>
                         <Link to={`/character/${params.charId}`}>Abilities</Link>

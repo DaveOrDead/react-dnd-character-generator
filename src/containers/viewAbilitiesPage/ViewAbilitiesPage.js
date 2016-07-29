@@ -11,11 +11,12 @@ class ViewAbilitiesPage extends React.Component {
     componentDidMount(){
         const {actions} = this.props;
         actions.fetchDataIfNeeded('abilities');
+        actions.fetchDataIfNeeded('character_abilities');
     }
 
     render() {
 
-        const {abilities = [], character, isFetching = true} = this.props;
+        const {abilities = [], character, characterAbilities, isFetching = true} = this.props;
 
         return (
                 <div>
@@ -23,7 +24,7 @@ class ViewAbilitiesPage extends React.Component {
                     <h2>Loading...</h2>
                     }
                     {!isFetching && abilities.length === 0 &&
-                    <h2>Empty.</h2>
+                    <h2>Empty. {characterAbilities}</h2>
                     }
                     {abilities.length > 0 &&
                     <div className="l-grid l-grid--gutter-vertical-x-large">
@@ -43,6 +44,7 @@ class ViewAbilitiesPage extends React.Component {
 
 ViewAbilitiesPage.propTypes = {
     abilities: React.PropTypes.array,
+    characterAbilities: React.PropTypes.array,
     actions: React.PropTypes.object.isRequired,
     character: React.PropTypes.object.isRequired,
     isFetching: React.PropTypes.bool
@@ -53,6 +55,7 @@ function mapStateToProps(state) {
     return {
         isFetching: state.api.isFetching,
         abilities: state.api.abilities,
+        characterAbilities: state.api.character_abilities,
         character: state.character
     };
 }
