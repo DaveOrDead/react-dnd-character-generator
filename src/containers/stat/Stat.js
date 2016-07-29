@@ -46,7 +46,8 @@ Stat.propTypes = {
     character: React.PropTypes.object.isRequired,
     id: React.PropTypes.number,
     text: React.PropTypes.string,
-    abilityId: React.PropTypes.number
+    abilityId: React.PropTypes.number,
+    abilityCode: React.PropTypes.string
 };
 
 function mapStateToProps(state) {

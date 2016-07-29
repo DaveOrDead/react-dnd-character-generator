@@ -19,7 +19,7 @@ class SkillsPage extends React.Component {
 
         const {character, skills = [], isFetching = true} = this.props;
 
-        const maxSkillPoints = getInitialSkillPoints(character.class.initial_skill_modifier, character.abilities.ability4);
+        const maxSkillPoints = getInitialSkillPoints(character.class.skill_points, character.abilities[4]);
 
         const remainingSkillPoints = getRemainingSkillPoints(character.skills, maxSkillPoints);
 

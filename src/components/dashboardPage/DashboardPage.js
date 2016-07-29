@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as apiActions from '../../actions/apiActions';
-import { Link } from 'react-router';
+import {Link} from 'react-router';
 
 import Card from '../card';
 import Button from '../button';
