@@ -15,7 +15,9 @@ export default function (state = {isFetching: false,
             return Object.assign({}, state, {
                 isFetching: false,
                 didInvalidate: false,
-                [action.data]: action.payload.data
+                [action.data]: action.payload.data.data,
+                message: action.payload.data.message,
+                status: action.payload.data.status
             });
 
         default :
