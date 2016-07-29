@@ -50,8 +50,9 @@ class AbilitiesPage extends React.Component {
                               return (<Stat
                                            key={ability.id}
                                            abilityId={ability.id}
+                                           abilityCode={ability.code.toLowerCase()}
                                            text={ability.name}
-                                           race={character.race}
+                                           race={character.race.id}
                                        />);
                             })}
                         </tbody>

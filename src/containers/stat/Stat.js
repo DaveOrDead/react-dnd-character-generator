@@ -6,10 +6,10 @@ import * as actions from '../../actions/charGenActions';
 import Button from '../../components/button';
 import {rollAbility} from '../../utils/rollAbility';
 
-const Stat = ({actions, character, text, abilityId}) => {
+const Stat = ({actions, character, text, abilityId, abilityCode}) => {
 
         const value = parseInt(character.abilities[abilityId]);
-        const racialModifier = character.race.modifiers[abilityId] || 0;
+        const racialModifier = character.race[abilityCode] || 0;
         const total = value + racialModifier;
 
         return (
@@ -44,9 +44,9 @@ const Stat = ({actions, character, text, abilityId}) => {
 Stat.propTypes = {
     actions: React.PropTypes.object.isRequired,
     character: React.PropTypes.object.isRequired,
-    id: React.PropTypes.string,
+    id: React.PropTypes.number,
     text: React.PropTypes.string,
-    abilityId: React.PropTypes.string
+    abilityId: React.PropTypes.number
 };
 
 function mapStateToProps(state) {

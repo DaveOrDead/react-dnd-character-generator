@@ -22,7 +22,7 @@ export default function charGenReducer(state = initialState.character, action) {
             return Object.assign({}, state, {
                 isFetching: false,
                 didInvalidate: false,
-                [action.dataType]: action.payload.data[0]
+                [action.dataType]: action.payload.data.data
             });
 
         case UPDATE_CLASS:
