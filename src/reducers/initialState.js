@@ -13,20 +13,43 @@ export default {
     level: 1,
     skills: {},
     race: {
-        id: 5,
-        size: 'Medium'
+        "id": 5,
+        "name": "Human",
+        "level_adjustment": 0,
+        "space": 5,
+        "reach": 5,
+        "combat": "",
+        "natural_armor": null,
+        "image": null,
+        "racial_hit_dice_count": null,
+        "size": "Medium",
+        "speed": 30,
+        "modifiers": {},
+        "raceSkillBonus": {}
     },
     class: {
-        id: 9,
-        initial_skill_modifier: 4,
-        level_skill_modifier: 4,
-        baseAttackBonus: [2],
-        baseSavingThrows: {
-                    fort: 2,
-                    ref: 0,
-                    will: 0
-                }
-            }
+        "id": 9,
+        "name": "Fighter",
+        "hit_die": 10,
+        "skill_points": 2,
+        "starting_gold": "",
+        "classSkills": [
+            50,
+            54,
+            55,
+            57,
+            63,
+            64,
+            70,
+            71,
+            72,
+            73,
+            77,
+            81,
+            87,
+            88,
+            89]
+        }
     }
 };
 
