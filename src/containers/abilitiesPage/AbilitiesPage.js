@@ -40,7 +40,6 @@ class AbilitiesPage extends React.Component {
                                 <th>Ability</th>
                                 <th className="h-center-text">Total</th>
                                 <th className="h-center-text">Racial modifier</th>
-                                <th className="h-center-text">Misc</th>
                                 <th className="h-center-text">Base</th>
                                 <th><span className="h-hide-visually">Actions</span></th>
                             </tr>
@@ -50,7 +49,6 @@ class AbilitiesPage extends React.Component {
                               return (<Stat
                                            key={ability.id}
                                            abilityId={ability.id}
-                                           abilityCode={ability.code.toLowerCase()}
                                            text={ability.name}
                                            race={character.race.id}
                                        />);

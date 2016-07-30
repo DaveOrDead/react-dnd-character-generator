@@ -6,10 +6,10 @@ import * as actions from '../../actions/charGenActions';
 import Button from '../../components/button';
 import {rollAbility} from '../../utils/rollAbility';
 
-const Stat = ({actions, character, text, abilityId, abilityCode}) => {
+const Stat = ({actions, character, text, abilityId}) => {
 
         const value = parseInt(character.abilities[abilityId]);
-        const racialModifier = character.race[abilityCode] || 0;
+        const racialModifier = character.race.modifiers[abilityId] || 0;
         const total = value + racialModifier;
 
         return (
@@ -22,9 +22,6 @@ const Stat = ({actions, character, text, abilityId, abilityCode}) => {
                     </td>
                     <td className="h-center-text">
                         {racialModifier}
-                    </td>
-                    <td className="h-center-text">
-                        {'0'}
                     </td>
                     <td className="h-center-text">
                         {character.abilities[abilityId]}
