@@ -9,10 +9,11 @@ import Button from '../../components/button';
 const SkillItem = ({item, actions, character, remainingSkillPoints}) => {
 
     const isClassSkill = character.class.classSkills[item.id];
-    const statModifier = getAbilityModifier(character.abilities[item.ability_id]) || 0;
+    const abilityMod = getAbilityModifier(character.abilities[item.ability_id]) || 0;
+    const racialMod = character.race.raceSkillBonus[item.id] || 0;
     const skillPoints = character.skills[item.id] || 0;
     const ranks = isClassSkill ? skillPoints : skillPoints / 2;
-    const total = ranks + statModifier;
+    const total = ranks + abilityMod + racialMod;
 
     return (
         <tr>
@@ -21,7 +22,8 @@ const SkillItem = ({item, actions, character, remainingSkillPoints}) => {
             {item.untrained ? 'Untrained' : 'Trained'}</small>
             </td>
             <td className="h-center-text"><strong>{total}</strong></td>
-            <td className="h-center-text">{statModifier}</td>
+            <td className="h-center-text">{abilityMod}</td>
+            <td className="h-center-text">{racialMod}</td>
             <td className="h-center-text">{ranks}</td>
             <td>
                 <Button

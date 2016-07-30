@@ -42,6 +42,7 @@ class SkillsPage extends React.Component {
                             <th>Name</th>
                             <th className="h-center-text">Total</th>
                             <th className="h-center-text">Ability Mod</th>
+                            <th className="h-center-text">Racial Mod</th>
                             <th className="h-center-text">Ranks</th>
                             <th><span className="h-hide-visually">Actions</span></th>
                         </tr>
